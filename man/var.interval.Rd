@@ -2,7 +2,7 @@
 % Please edit documentation in R/var.interval.R
 \name{var.interval}
 \alias{var.interval}
-\title{Analyze the variance form a dataset using the chi**2 distribution}
+\title{Analyze the variance from a dataset using the chi**2 distribution}
 \usage{
 var.interval(data, sigma0, conf.level = 0.95)
 }
@@ -14,10 +14,15 @@ var.interval(data, sigma0, conf.level = 0.95)
 \item{conf.level}{The desired confidence level (0.95)}
 }
 \value{
-None. Prints results
+A dataframe with results
 }
 \description{
-Analyze the variance form a dataset using the chi**2 distribution
+This was developed from [eda358.r](https://www.itl.nist.gov/div898/handbook/eda/section3/eda358.r)
+I modified the function to return a dataframe. The user can print
+the dataframe or use functions like kable to output a table in
+a Rmarkdown document. The original function supplied a default
+95% confidence interval and let the user change it. However the 
+95% CI was hardcoded in the body of the original function.
 }
 \examples{
 library(statshelpR)
@@ -30,6 +35,7 @@ dat <- c(0.422, 0.424, 0.424, 0.430, 0.419,
          0.424, 0.420, 0.424, 0.425, 0.425,
          0.423, 0.431, 0.437, 0.422, 0.434)
 
-var.interval(dat, 0.002, 0.95)
+df <- var.interval(dat, 0.002, 0.95)
+print(df)
 
 }
