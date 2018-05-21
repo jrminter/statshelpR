@@ -16,9 +16,13 @@ suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2
 ```
 # Introduction
 
+This example is adapted from data supplied by
+[Ron Larson and Betsy Faber](https://www.amazon.com/Elementary-Statistics-Picturing-World-6th/dp/0321911210), **Elementary Statistics Picturing the World**, 6th edition,
+in Chapter 6 p. 344.
+
 A vendor claims that the variation of a batch of washers is within
-$\pm 0.002$ cm. The customer measured the thickness of 15 randomly
-selected washers and reported the data (in cm) below.
+$\pm 0.002$ in. The customer measured the thickness of 15 randomly
+selected washers and reported the data (in inches) below.
 
 ```{r inputData}
 dat <- c(0.422, 0.424, 0.424, 0.430, 0.419,
