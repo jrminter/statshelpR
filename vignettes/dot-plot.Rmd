@@ -1,0 +1,71 @@
+---
+title: "Making a dotplot"
+author: "John Minter"
+date: "Last updated: 2018-05-23"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Making a dotplot}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+```
+# Introduction
+
+Dotplots were made popular by the statistician W. S. Cleveland and are
+described in the book [The Elements of Graphing Data](https://www.amazon.com/Elements-Graphing-Data-William-Cleveland/dp/0963488414/).
+
+The R core team implemented this function in the base graphics package as
+the function `stripchart`. You can get help on this function by typing
+the command `??stripchart`.
+
+There is a helpful YouTube video [here](https://www.youtube.com/watch?v=x9_rrjVxGdY).
+
+# Example
+
+## Introduction
+
+This example is used data supplied from page 41 in your text
+[Robert Johnson and Patricia Kuby](https://www.amazon.com/Elementary-Statistics-Available-Titles-Aplia/dp/0538733500/).
+
+## Analysis
+
+### Input the data
+
+Use the list of 19 exam grades from **Illustration 2.3** on p. 41.
+We will create a list named `grades`.
+
+```{r inputData}
+grades <- c(76, 74, 82, 96, 66, 76, 78, 72, 52, 68,
+            86, 84, 62, 76, 78, 92, 82, 74, 88)
+```
+
+### Make the dotplot
+
+First, use the base graphics function `stripchart`:
+
+```{r stripChart,fig.width=6.5}
+stripchart(df$grades, method="stack",
+           at=c(0.05),
+           pch=20, cex=3,
+           las-1,
+           frame.plot=FALSE,
+           xlim=c(50,100),
+           main="Exam grades")
+```
+
+For comparison, let's look at the histogram using the base graphics
+function. We will set the breaks to have bins one grade wide. In
+general, histograms are more useful, especially for larger data sets.
+
+```{r makeHisto, fig.width=6.5}
+minG <- min(grades)-1
+maxG <- max(grades)+1
+breaks <- seq(minG, maxG, 1)
+a <- hist(grades, breaks, xlim=c(minG, 100))
+```
+
