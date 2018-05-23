@@ -49,7 +49,7 @@ grades <- c(76, 74, 82, 96, 66, 76, 78, 72, 52, 68,
 First, use the base graphics function `stripchart`:
 
 ```{r stripChart,fig.width=6.5}
-stripchart(df$grades, method="stack",
+stripchart(grades, method="stack",
            at=c(0.05),
            pch=20, cex=3,
            las-1,
