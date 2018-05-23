@@ -58,6 +58,27 @@ stripchart(grades, method="stack",
            main="Exam grades")
 ```
 
+We can also try the newer `ggplot2` graphics.
+
+```{r ggplot2DP, fig.width=6.5}
+
+df <- data.frame(grades=grades)
+a <- ggplot(df, aes(x = grades)) +
+     geom_dotplot(binwidth=1) +
+     scale_x_continuous(breaks=seq(from=50, to=100, by=5),
+                        limits = c(50, 100)) +
+     scale_y_continuous(NULL, breaks = NULL) +
+     xlab("grade") +
+     theme(axis.text=element_text(size=12),
+           axis.title=element_text(size=12),
+           plot.title=element_text(hjust = 0.5))
+
+print(a)
+
+```
+
+
+
 For comparison, let's look at the histogram using the base graphics
 function. We will set the breaks to have bins one grade wide. In
 general, histograms are more useful, especially for larger data sets.
@@ -67,5 +88,19 @@ minG <- min(grades)-1
 maxG <- max(grades)+1
 breaks <- seq(minG, maxG, 1)
 a <- hist(grades, breaks, xlim=c(minG, 100))
+```
+
+Now try the newer ggplot2 approach
+
+```{r makeGGHisto, fig.width=6.5}
+a <- ggplot(df, aes(x = grades)) +
+     geom_histogram(bins=50) +
+     xlab("grade") + 
+     ggtitle("Exam grade distribution") +
+     theme(axis.text=element_text(size=12),
+           axis.title=element_text(size=12),
+           plot.title=element_text(hjust = 0.5)) # center the title
+print(a)
+
 ```
 
