@@ -1,0 +1,48 @@
+---
+title: "Getting Started with R and RStudio for Statistics"
+author: "John Minter"
+date: "Last updated: 2018-05-29"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Getting Started with R and RStudiio for Statistics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+```
+# Introduction
+
+R and R-Studio provide a very powerful environment for statistical
+analysis and visualization of data. R is a Open Source language
+developed by statisticians for statistical analysis and visualization of
+a wide range of data. It is both powerful and popular. Like any
+software there is a learning curve. Happily, the `#rstats` community
+on Twitter is very helpful. Examples are typically a Google search
+away.
+
+## Where to get the software
+
+Our intention is to install the software on the LCS computers. If you
+have a computer at home, you can get the software and install it
+on your own system. The software runs on Windows, Mac, and Linux. Your
+teacher can give you some hints to help you with your system.
+
+## How to get help
+
+Most of those who answer questions are volunteers. The likelihood of
+getting a response increases when you show that you are being
+considerate.
+
+1. Do a Google search first.
+2. Make your question specific. Explain what you have tried and what
+did not work as you expected.
+3. Make a **minimum reproducible example** that works with a simple
+data set that is easily available. Explain what did not work as
+expected.
