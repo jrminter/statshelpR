@@ -28,12 +28,27 @@ software there is a learning curve. Happily, the `#rstats` community
 on Twitter is very helpful. Examples are typically a Google search
 away.
 
+## Our approach
+
+Many instructors have concluded that the best way to start is by
+learning to **understand the objective of our analysis** and our
+**data set**. First we will learn how to get our data into R. Often
+this will require us to transform a **messy** data set into a **tidy**
+format that is easier to analyze and plot.
+
+Next we want to plot our data to look for patterns. Finally, we will
+apply the appropriate statistical algorithms to answer the question
+that prompted our study. Finally, we will prepare a report that
+summarizes our results. We will use **Rmarkdown** to write a report
+that embeds our computations to make a report that can be
+reproduced by someone else.
+
 ## Where to get the software
 
 Our intention is to install the software on the LCS computers. If you
 have a computer at home, you can get the software and install it
 on your own system. The software runs on Windows, Mac, and Linux. Your
-teacher can give you some hints to help you with your system.
+teacher can give you some hints to help you with your system. 
 
 ## How to get help
 
