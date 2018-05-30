@@ -4,6 +4,7 @@ author: "John Minter"
 date: "Last updated: 2018-05-29"
 output:
   rmarkdown::html_vignette:
+    number_sections: true
     toc: true
     toc_depth: 2
 vignette: >
