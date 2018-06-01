@@ -24,7 +24,3 @@ A dataframe
 \description{
 Analyze the variance from a dataset using the chi**2 distribution
 }
-\examples{
-library(statshelpR)
-
-}

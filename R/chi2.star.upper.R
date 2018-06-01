@@ -8,9 +8,6 @@
 #' 
 #' @return A dataframe
 #' 
-#' @examples
-#' library(statshelpR)
-#' 
 #' @import pander
 #' 
 #' @export
@@ -23,15 +20,14 @@
 #'
 chi2.star.upper <- function(n, sigma2.samp, sigma2.pop, up.bound=70, conf.level=0.95){
   df <- n - 1
-  varTest <- sigma2.samp
-  varExp <- sigma2.pop
+  varTest <- sigma2.pop
+  varExp <- sigma2.samp
   
   chi2Test <- qchisq(conf.level, df)
-  chi2star <- df*varExp/varTest
+  chi2Star <- df*varExp/varTest
   
-  res <- c(chi2Test, chi2star)
+  res <- c(chi2Test, chi2Star)
   names(res) <- c("chi2Test", "chi2Star")
-  pander(res)
   
   oMar <- par('mar')
   par(mar=c(5.1,4.1,1.1,1.1))
@@ -43,5 +39,7 @@ chi2.star.upper <- function(n, sigma2.samp, sigma2.pop, up.bound=70, conf.level=
   pvec <- dchisq(xvec,df)
   polygon(c(xvec,rev(xvec)),c(pvec,rep(0,length(pvec))),
           col=adjustcolor("black",alpha=0.3))
-  abline(v=chi2Test)
+  abline(v=chi2Star)
+  
+  return(res)
 }
