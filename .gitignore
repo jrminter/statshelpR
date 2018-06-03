@@ -3,3 +3,5 @@
 .RData
 .Ruserdata
 Rplots.pdf
+vignettes/*.R
+vignettes/*.html
