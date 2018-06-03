@@ -1,0 +1,79 @@
+---
+title: "Using the Binomial Distribution in R"
+# author: "John Minter"
+date: "Last updated: 2018-06-03"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using the Binomial Distribution in R}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+# suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+```
+# Introduction
+
+This example is adapted from
+[www.r-tutor.com](http://www.r-tutor.com/elementary-statistics/probability-distributions/binomial-distribution).
+
+The binomial distribution is a discrete probability distribution. It
+describes the outcome of n independent trials in an experiment. Each
+trial is assumed to have only two outcomes, either success or failure.
+If the probability of a successful trial is `p`, then the probability
+of having x successful outcomes in an experiment of n independent trials
+given by.
+
+$$f(x) = 	\dbinom{n}{x} \ p^x (1-p)^{(n-x)} \ where \ x=1,2,\ldots,n$$
+
+# Problem
+
+Suppose there are twelve multiple choice questions in an English class
+quiz. Each question has five possible answers, and **only one** of them
+is correct. Find the probability of having four or less correct answers
+if a student attempts to answer every question at random.
+
+# Solution
+
+Since only one out of five possible answers is correct, the probability
+of answering a question correctly by random is $1/5 = 0.2$. We can use R
+to find the probability of having exactly 4 correct answers by random
+attempts as follows.
+
+```{r 4CorrectAns}
+ans <- dbinom(4, size=12, prob=0.2)
+print(ans)
+```
+
+To find the probability of having **four or less correct answers**
+by random attempts, we can **sequentially apply** the function `dbinom`
+with $x=0,1,\ldots,4$.
+
+```{r, BruteForce}
+
+ans <- dbinom(0, size=12, prob=0.2) + 
+       dbinom(1, size=12, prob=0.2) + 
+       dbinom(2, size=12, prob=0.2) + 
+       dbinom(3, size=12, prob=0.2) + 
+       dbinom(4, size=12, prob=0.2)
+print(ans)
+```
+
+Alternatively, we can use the **cumulative probability function for
+binomial distribution**, `pbinom`.
+
+```{r usePbinom}
+
+ans <- pbinom(4, size=12, prob=0.2)
+print(ans)
+
+```
+
+# Answer
+
+The probability of **four or less** questions answered correctly by
+random in a twelve question multiple choice quiz is
+`r sprintf("%.1f", round(100*ans, 1))`%.
+
