@@ -2,7 +2,11 @@
 title: "Using the Binomial Distribution in R"
 # author: "John Minter"
 date: "Last updated: 2018-06-03"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
 vignette: >
   %\VignetteIndexEntry{Using the Binomial Distribution in R}
   %\VignetteEngine{knitr::rmarkdown}
@@ -12,9 +16,9 @@ vignette: >
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
-# suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
 ```
-# Introduction
+# An example application
 
 This example is adapted from
 [www.r-tutor.com](http://www.r-tutor.com/elementary-statistics/probability-distributions/binomial-distribution).
@@ -28,14 +32,14 @@ given by.
 
 $$f(x) = 	\dbinom{n}{x} \ p^x (1-p)^{(n-x)} \ where \ x=1,2,\ldots,n$$
 
-# Problem
+## Problem
 
 Suppose there are twelve multiple choice questions in an English class
 quiz. Each question has five possible answers, and **only one** of them
 is correct. Find the probability of having four or less correct answers
 if a student attempts to answer every question at random.
 
-# Solution
+## Solution
 
 Since only one out of five possible answers is correct, the probability
 of answering a question correctly by random is $1/5 = 0.2$. We can use R
@@ -53,11 +57,11 @@ with $x=0,1,\ldots,4$.
 
 ```{r, BruteForce}
 
-ans <- dbinom(0, size=12, prob=0.2) + 
-       dbinom(1, size=12, prob=0.2) + 
-       dbinom(2, size=12, prob=0.2) + 
-       dbinom(3, size=12, prob=0.2) + 
-       dbinom(4, size=12, prob=0.2)
+ans <-	dbinom(0, size=12, prob=0.2) + 
+		dbinom(1, size=12, prob=0.2) + 
+		dbinom(2, size=12, prob=0.2) + 
+		dbinom(3, size=12, prob=0.2) + 
+		dbinom(4, size=12, prob=0.2)
 print(ans)
 ```
 
@@ -71,9 +75,50 @@ print(ans)
 
 ```
 
-# Answer
+## Answer
 
 The probability of **four or less** questions answered correctly by
 random in a twelve question multiple choice quiz is
 `r sprintf("%.1f", round(100*ans, 1))`%.
+
+# Plotting the binomial distribution
+
+This example is adapted from
+[stackoverflow](https://stackoverflow.com/questions/14933884/statistics-binomial-distribution-and-simple-graph-in-r).
+
+## The problem
+
+What is the probability of having **at least 16 successes** out of 20
+operations **given that the probability of success is 0.8**?
+
+## The solution
+
+
+
+We will use `ggplot2` to create the basic plot
+
+
+```{r plotBasicBinomial, fig.width=7.125}
+require(ggplot2)
+
+df <- data.frame(x=1:20, prob=dbinom(1:20, 20, prob=0.8))
+plt <-	ggplot(data = df, aes(x = x, y = prob)) + geom_line() +
+		geom_ribbon(data = subset(df, x >= 16 & x <= 20),
+					aes(ymax = prob), ymin=0, fill = "red",
+						colour = NA, alpha = 0.5)
+print(plt)
+```
+
+We can make the plot more readable with better axis labels.
+
+```{r plotBetter, fig.width=7.125}
+plt	<-	plt +
+		xlab("Number of successful operations") +
+		ylab("Probability") +
+		ggtitle("Probability of 16/20 successful operations") +
+		theme(axis.text=element_text(size=12),
+			  axis.title=element_text(size=12),
+			  plot.title=element_text(hjust = 0.5))
+print(plt)
+```
 
