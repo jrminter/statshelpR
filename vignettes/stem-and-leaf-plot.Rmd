@@ -1,6 +1,6 @@
 ---
 title: "Making a Stem and Leaf Plot"
-author: "John Minter"
+# author: "John Minter"
 date: "Last updated: 2018-06-03"
 output:
   rmarkdown::html_vignette:

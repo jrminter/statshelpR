@@ -1,6 +1,6 @@
 ---
 title: "Getting Started with R and RStudio for Statistics"
-author: "John Minter"
+# author: "John Minter"
 date: "Last updated: 2018-06-03"
 output:
   rmarkdown::html_vignette:
