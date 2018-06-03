@@ -1,8 +1,12 @@
 ---
 title: "Hypothesis testing of the variance"
 author: "John Minter"
-date: "Last updated: 2018-05-19"
-output: rmarkdown::html_vignette
+date: "Last updated: 2018-06-03"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
 vignette: >
   %\VignetteIndexEntry{Hypothesis testing of the variance}
   %\VignetteEngine{knitr::rmarkdown}
@@ -25,9 +29,9 @@ $\pm 0.002$ in. The customer measured the thickness of 15 randomly
 selected washers and reported the data (in inches) below.
 
 ```{r inputData}
-dat <- c(0.422, 0.424, 0.424, 0.430, 0.419,
-         0.424, 0.420, 0.424, 0.425, 0.425,
-         0.423, 0.431, 0.437, 0.422, 0.434)
+dat <-	c(0.422, 0.424, 0.424, 0.430, 0.419,
+		  0.424, 0.420, 0.424, 0.425, 0.425,
+		  0.423, 0.431, 0.437, 0.422, 0.434)
 ```
 Does this sample of washers meet the variance criterion at the 
 95% confidence level? We will compute the 95% confidence interval

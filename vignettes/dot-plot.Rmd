@@ -1,8 +1,12 @@
 ---
 title: "Making a dotplot"
 author: "John Minter"
-date: "Last updated: 2018-05-23"
-output: rmarkdown::html_vignette
+date: "Last updated: 2018-06-03"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
 vignette: >
   %\VignetteIndexEntry{Making a dotplot}
   %\VignetteEngine{knitr::rmarkdown}
@@ -41,7 +45,7 @@ We will create a list named `grades`.
 
 ```{r inputData}
 grades <- c(76, 74, 82, 96, 66, 76, 78, 72, 52, 68,
-            86, 84, 62, 76, 78, 92, 82, 74, 88)
+			86, 84, 62, 76, 78, 92, 82, 74, 88)
 ```
 
 ### Make the dotplot
@@ -50,12 +54,12 @@ First, use the base graphics function `stripchart`:
 
 ```{r stripChart,fig.width=6.5}
 stripchart(grades, method="stack",
-           at=c(0.05),
-           pch=20, cex=3,
-           las-1,
-           frame.plot=FALSE,
-           xlim=c(50,100),
-           main="Exam grades")
+				   at=c(0.05),
+				   pch=20, cex=3,
+				   las-1,
+				   frame.plot=FALSE,
+				   xlim=c(50,100),
+				   main="Exam grades")
 ```
 
 We can also try the newer `ggplot2` graphics.
@@ -63,15 +67,15 @@ We can also try the newer `ggplot2` graphics.
 ```{r ggplot2DP, fig.width=6.5}
 
 df <- data.frame(grades=grades)
-a <- ggplot(df, aes(x = grades)) +
-     geom_dotplot(binwidth=1) +
-     scale_x_continuous(breaks=seq(from=50, to=100, by=5),
-                        limits = c(50, 100)) +
-     scale_y_continuous(NULL, breaks = NULL) +
-     xlab("grade") +
-     theme(axis.text=element_text(size=12),
-           axis.title=element_text(size=12),
-           plot.title=element_text(hjust = 0.5))
+a <-	ggplot(df, aes(x = grades)) +
+			geom_dotplot(binwidth=1) +
+			scale_x_continuous(breaks=seq(from=50, to=100, by=5),
+												 limits = c(50, 100)) +
+			scale_y_continuous(NULL, breaks = NULL) +
+			xlab("grade") +
+			theme(axis.text=element_text(size=12),
+				  axis.title=element_text(size=12),
+				  plot.title=element_text(hjust = 0.5))
 
 print(a)
 
@@ -94,12 +98,12 @@ Now try the newer ggplot2 approach
 
 ```{r makeGGHisto, fig.width=6.5}
 a <- ggplot(df, aes(x = grades)) +
-     geom_histogram(bins=50) +
-     xlab("grade") + 
-     ggtitle("Exam grade distribution") +
-     theme(axis.text=element_text(size=12),
-           axis.title=element_text(size=12),
-           plot.title=element_text(hjust = 0.5)) # center the title
+			geom_histogram(bins=50) +
+			xlab("grade") + 
+			ggtitle("Exam grade distribution") +
+			theme(axis.text=element_text(size=12),
+				  axis.title=element_text(size=12),
+				  plot.title=element_text(hjust = 0.5)) # center the title
 print(a)
 
 ```
