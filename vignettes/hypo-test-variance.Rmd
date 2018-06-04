@@ -41,7 +41,7 @@ of our sample.
 library(statshelpR)
 library(knitr)
 
-df <- var.interval(dat, 0.002, 0.95)
+df <- var_interval(dat, 0.002, 0.95)
 kable(df)
 ```
 

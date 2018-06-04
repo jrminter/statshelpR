@@ -9,7 +9,7 @@
 #'
 #' @param data A vector of data values (real number)
 #' @param sigma0 The target standard deviation
-#' @param conf.level The desired confidence level (0.95)
+#' @param conf_level The desired confidence level (0.95)
 #' 
 #' @return A dataframe with results
 #' 
@@ -24,21 +24,21 @@
 #'          0.424, 0.420, 0.424, 0.425, 0.425,
 #'          0.423, 0.431, 0.437, 0.422, 0.434)
 #'
-#' df <- var.interval(dat, 0.002, 0.95)
+#' df <- var_interval(dat, 0.002, 0.95)
 #' print(df)
 #' 
 #' @export
 #'
-var.interval = function(data,sigma0,conf.level = 0.95) {
+var_interval = function(data, sigma0, conf_level = 0.95) {
   df = length(data) - 1
-  chilower = qchisq((1 - conf.level)/2, df)
-  chiupper = qchisq((1 - conf.level)/2, df, lower.tail = FALSE)
+  chilower = qchisq((1 - conf_level)/2, df)
+  chiupper = qchisq((1 - conf_level)/2, df, lower.tail = FALSE)
   v = var(data)
   testchi = df*v/(sigma0^2)
-  alpha = 1-conf.level
+  alpha = 1-conf_level
   
   sAlpha <- round(alpha, 3)
-  sCI <- round(100*conf.level, 3)
+  sCI <- round(100*conf_level, 3)
   
   vNames <- c("Standard deviation",
               "Test statistic",

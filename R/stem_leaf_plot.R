@@ -14,10 +14,10 @@
 #' 
 #' @example
 #' library(statshelpR)
-#' print(stem.leaf.plot(iris$Petal.Length))
+#' print(stem_leaf_plot(iris$Petal.Length))
 #' 
 
-stem.leaf.plot <- function(dat){
+stem_leaf_plot <- function(dat){
   tmp <- capture.output(stem(dat))
   stemdf = data.frame(tmp, rr=1:length(tmp))
   plt <- ggplot(stemdf) +
@@ -33,4 +33,4 @@ stem.leaf.plot <- function(dat){
          return(plt)
 }
 
-print(stem.leaf.plot(iris$Petal.Length))
+print(stem_leaf_plot(iris$Petal.Length))

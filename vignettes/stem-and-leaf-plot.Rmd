@@ -42,7 +42,7 @@ dat <- c(59.2, 61.5, 62.3, 61.4, 60.9, 59.8,
 
 ```{r makePlot, fig.width=6.5}
 library(statshelpR)
-print(stem.leaf.plot(dat))
+print(stem_leaf_plot(dat))
 ```
 
 ## Summary
