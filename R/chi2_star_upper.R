@@ -12,10 +12,10 @@
 #' 
 #' @export
 #' 
-#' @example
+#' @examples
 #' # From Johnson-Kuby-4th-ed, Sect 9.3-Part-2-Hypothesis-Testing, Ex-9.14-p454
 #' library(statshelpR)
-#' chi2_star_upper (28, 0.007, 0.004, up.bound=70, conf.level=0.95)
+#' chi2_star_upper (28, 0.007, 0.004, upper_bound=70, conf_level=0.95)
 #' 
 #'
 chi2_star_upper <- function(n, sigma2_samp, sigma2_pop, upper_bound=70, conf_level=0.95){

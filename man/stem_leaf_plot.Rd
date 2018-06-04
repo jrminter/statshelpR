@@ -18,3 +18,8 @@ Plot a stem and leaf plot from a vector or list of observations
 \details{
 Credit: Adapted from https://stackoverflow.com/questions/26532564/how-to-output-a-stem-and-leaf-plot-as-a-plot
 }
+\examples{
+library(statshelpR)
+print(stem_leaf_plot(iris$Petal.Length))
+
+}
