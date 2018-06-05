@@ -30,6 +30,49 @@ away. The
 [Modern Dive](https://ismayc.github.io/moderndiver-book/2-getting-started.html)
 text by Chester Ismay and Albert Y. Kim is a helpful resource.
 
+## Benefits of using R and RStudio
+
+1. **Cost**: Both are freely available. R is Open Source. RStudio is available
+in Open Source and commercial editions. Both programs run on Windows/Mac/Linux
+operating systems.
+
+2. Both are **widely used** both in universities and in large and small corporations.
+
+3. The RStudio integrated development environment permits us to write
+**reproducible reports** that use a technique called **literate programming**
+made popular by Donald Knuth at Stanford University. We embed the
+**code chunks** that do our computations **in our reports** (i.e. show our
+work).  The code is run when we generate the report and the results are
+included in the report. **No more cutting and pasting**!!! This permits our
+audience to see our work and run it on their own computers if they wish. This
+both **improves communication** and **reduces errors.** We can also include
+mathematical equations if needed, such as the formula for a 
+**binomial distribution** that we will use in Chapter 5.
+
+$$f(x) = 	\dbinom{n}{x} \ p^x (1-p)^{(n-x)} \ where \ x=1,2,\ldots,n$$
+
+
+A simple example is shown below where we compute the mean and standard
+deviation of a series of test scores. (We will use the R package `pander` to
+make nice looking output). Note the use of **comments* (preceded by `#`) to
+explain our work.
+
+```{r computeTestScores}
+library(pander)
+# Our test scores...
+scores <- c(99, 97, 90, 87, 82, 82, 80, 80, 78, 77, 75, 73, 70,
+						68, 65, 62, 60, 55, 45, 40)
+# compute the mean and standard deviation
+avg <- mean(scores)
+std <- sd(scores)
+# make a list of results and round to 1 decimal place 
+ans <- round(c(avg, std), 1)
+# add labels for a table
+names(ans) <- c("mean", "std dev")
+# print the table..
+pander(ans)
+```
+
 ## Our approach
 
 Many instructors have concluded that the best way to start is by
