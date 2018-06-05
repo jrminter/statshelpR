@@ -54,7 +54,7 @@ $$f(x) = 	\dbinom{n}{x} \ p^x (1-p)^{(n-x)} \ where \ x=1,2,\ldots,n$$
 
 A simple example is shown below where we compute the mean and standard
 deviation of a series of test scores. (We will use the R package `pander` to
-make nice looking output). Note the use of **comments* (preceded by `#`) to
+make nice looking output). Note the use of **comments** (preceded by `#`) to
 explain our work.
 
 ```{r computeTestScores}
