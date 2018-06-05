@@ -12,7 +12,7 @@
 #' 
 #' @export
 #' 
-#' @example
+#' @examples
 #' library(statshelpR)
 #' print(stem_leaf_plot(iris$Petal.Length))
 #' 
