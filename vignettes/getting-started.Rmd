@@ -58,11 +58,13 @@ make nice looking output). Note the use of **comments** (preceded by `#`) to
 explain our work.
 
 ```{r computeTestScores}
+# we need to tell R that we want to use the pander package for the table
 library(pander)
-# Our test scores...
+# Our test scores... We create a list.
 scores <- c(99, 97, 90, 87, 82, 82, 80, 80, 78, 77, 75, 73, 70,
 						68, 65, 62, 60, 55, 45, 40)
 # compute the mean and standard deviation
+# these are both built-in functions because they are used frequently
 avg <- mean(scores)
 std <- sd(scores)
 # make a list of results and round to 1 decimal place 
@@ -84,7 +86,7 @@ that..."
 You can find a good introductions to Rmarkdown
 [here](https://rmarkdown.rstudio.com/lesson-1.html). The last item
 on the page is a helpful [cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
-that you can download for quick reference. After a bit of practicer you will
+that you can download for quick reference. After a bit of practice you will
 remember the codes you use most of the time and will need the cheatsheet
 less and less.
 
