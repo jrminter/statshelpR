@@ -98,6 +98,13 @@ Which is then rendered as
 
 ![Rendered Document.](inc/viewer-panel.png)
 
+You can find help on writing mathematical equations on the
+[artofproblemsolving.com](http://artofproblemsolving.com/wiki/index.php/LaTeX:Commands)
+website. This site was designed for advanced high school students. You 
+can find most of what you may need for statistics on
+[equplus.net](http://equplus.net/). They have a
+**wide range of examples**.
+
 
 
 
