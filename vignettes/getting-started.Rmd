@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with R and RStudio for Statistics"
 # author: "John Minter"
-date: "Last updated: 2018-06-03"
+date: "Last updated: 2018-06-05"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -49,7 +49,7 @@ both **improves communication** and **reduces errors.** We can also include
 mathematical equations if needed, such as the formula for a 
 **binomial distribution** that we will use in Chapter 5.
 
-$$f(x) = 	\dbinom{n}{x} \ p^x (1-p)^{(n-x)} \ where \ x=1,2,\ldots,n$$
+$$f(x) = \dbinom{n}{x} \ p^x (1-p)^{(n-x)} \ where \ x=1,2,\ldots,n$$
 
 
 A simple example is shown below where we compute the mean and standard
@@ -72,6 +72,35 @@ names(ans) <- c("mean", "std dev")
 # print the table..
 pander(ans)
 ```
+
+4. Help with Rmarkdown
+
+**Rmarkdown documents** use a simplified markup language to format documents.
+This results in **plain text** documents that are easily maintained under
+version control. Version control helps us to not lose our work and lets
+us recover from moments where we say, "I **really** wish I didn't do
+that..."
+
+You can find a good introductions to Rmarkdown
+[here](https://rmarkdown.rstudio.com/lesson-1.html). The last item
+on the page is a helpful [cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
+that you can download for quick reference. After a bit of practicer you will
+remember the codes you use most of the time and will need the cheatsheet
+less and less.
+
+[This image](https://d33wubrfki0l68.cloudfront.net/873d04e575f5e47dac3c8f91d101c71a28a3d506/6571d/lesson-images/markdown-1-markup.png)
+from R-Studio is reproduced below to give you an idea of what it looks like.
+I split the view into two pieces so it fit on the page better
+
+![An example of Rmarkdown in RStudio.](inc/markdown-panel.png)
+
+Which is then rendered as
+
+![Rendered Document.](inc/viewer-panel.png)
+
+
+
+
 
 ## Our approach
 
