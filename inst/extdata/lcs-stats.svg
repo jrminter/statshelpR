@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="535.01019"
+   height="617.46716"
+   viewBox="0 0 141.55477 163.37152"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.1 r15371"
-   sodipodi:docname="lcs-stats-inkscape.svg">
+   sodipodi:docname="lcs-stats.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,20 +26,27 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="168.2746"
-     inkscape:cy="645.18865"
+     inkscape:cx="186.03122"
+     inkscape:cy="334.38934"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
-     showgrid="true"
-     inkscape:window-width="1445"
-     inkscape:window-height="741"
-     inkscape:window-x="386"
-     inkscape:window-y="196"
+     showgrid="false"
+     inkscape:window-width="1184"
+     inkscape:window-height="756"
+     inkscape:window-x="147"
+     inkscape:window-y="147"
      inkscape:window-maximized="0"
-     showguides="false">
+     showguides="false"
+     fit-margin-top="1"
+     units="px"
+     fit-margin-bottom="1"
+     fit-margin-left="1"
+     fit-margin-right="1">
     <inkscape:grid
        type="xygrid"
-       id="grid4527" />
+       id="grid4527"
+       originx="-29.764275"
+       originy="-69.504697" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -56,7 +63,8 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-29.76428,-64.123761)">
     <path
        sodipodi:type="star"
        style="fill:#ffffff;fill-opacity:1;stroke:#061955;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -73,34 +81,7 @@
        inkscape:randomized="0"
        d="M 156.48215,201.75 80.066037,222.22563 24.125562,166.28516 44.601197,89.86905 121.01731,69.393415 176.95778,125.33389 Z"
        transform="rotate(-15,100.54167,145.80952)" />
-    <flowRoot
-       xml:space="preserve"
-       id="flowRoot4501"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:125%;font-family:Consolas;-inkscape-font-specification:'Consolas, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#061955;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.26458333,0,0,0.26458333,-6.8035714,1.5119047)"><flowRegion
-         id="flowRegion4503"
-         style="fill:#061955;fill-opacity:1"><rect
-           id="rect4505"
-           width="262.85715"
-           height="180"
-           x="177.14285"
-           y="416.80539"
-           style="fill:#061955;fill-opacity:1" /></flowRegion><flowPara
-         id="flowPara4507"
-         style="fill:#061955;fill-opacity:1">LCS</flowPara></flowRoot>    <flowRoot
-       xml:space="preserve"
-       id="flowRoot4509"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:125%;font-family:Consolas;-inkscape-font-specification:'Consolas, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#061955;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       transform="matrix(0.26458333,0,0,0.26458333,26.458333,7.5595238)"><flowRegion
-         id="flowRegion4511"
-         style="fill:#061955;fill-opacity:1"><rect
-           id="rect4513"
-           width="300"
-           height="108.57143"
-           x="271.42856"
-           y="559.66254"
-           style="fill:#061955;fill-opacity:1" /></flowRegion><flowPara
-         id="flowPara4515">Stats</flowPara></flowRoot>    <ellipse
+    <ellipse
        style="fill:#ff0000;fill-rule:evenodd;stroke:#000000;stroke-width:0.05474607px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="path4525"
        cx="44.285152"
@@ -295,5 +276,32 @@
        d="M 37.041667,172.64583 150.8125,106.5"
        id="path4586"
        inkscape:connector-curvature="0" />
-  </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4501"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:125%;font-family:Consolas;-inkscape-font-specification:'Consolas, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#061955;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.26458333,0,0,0.26458333,-6.8035714,1.5119047)"><flowRegion
+         id="flowRegion4503"
+         style="fill:#061955;fill-opacity:1"><rect
+           id="rect4505"
+           width="262.85715"
+           height="180"
+           x="177.14285"
+           y="416.80539"
+           style="fill:#061955;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara4507"
+         style="fill:#061955;fill-opacity:1">LCS</flowPara></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4509"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:85.33333588px;line-height:125%;font-family:Consolas;-inkscape-font-specification:'Consolas, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#061955;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.26458333,0,0,0.26458333,26.458333,7.5595238)"><flowRegion
+         id="flowRegion4511"
+         style="fill:#061955;fill-opacity:1"><rect
+           id="rect4513"
+           width="300"
+           height="108.57143"
+           x="271.42856"
+           y="559.66254"
+           style="fill:#061955;fill-opacity:1" /></flowRegion><flowPara
+         id="flowPara4515">Stats</flowPara></flowRoot>  </g>
 </svg>
