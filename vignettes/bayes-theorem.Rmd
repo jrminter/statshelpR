@@ -20,7 +20,7 @@ suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2
 ```
 # Introduction
 
-This example is a summary of a video by Ian Olasov (CUNY) in
+This vignette is a summary of a great video by Ian Olasov (CUNY) in
 [this](https://www.youtube.com/watch?v=OqmJhPQYRc8) YouTube video.
 
 We begin with a definition,
