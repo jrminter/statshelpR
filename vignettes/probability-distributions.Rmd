@@ -1,0 +1,81 @@
+---
+title: "Probability Distributions"
+# author: "John Minter"
+date: "Last updated: 2018-06-06"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Probability Distributions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+```
+# Definition of a probability distribution
+
+This example is adapted from  9:30 min on from the
+OpenIntro
+[YouTube](https://youtu.be/rG-SLQ2uF8U?list=PLkIselvEzpM5EgoOajhw83Ax_FktnlD6n)
+video.
+
+A **probability distribution** is a list of
+**all possible disjoint outcomes** (or **mutually-exclusive outcomes**)
+and their **probabilities**.
+
+A **probability distribution** must satisfy **three different rules**:
+
+1. The outcomes must be **disjoint**.
+2. Each probability must be between $0$ and $1$.
+3. The total of the probabilities must equal $1$.
+
+Consider some hypothetical distributions of income (in $1000) in the
+first 4 columns of the table below and evaluate them by our three rules.
+
++---+----+-----+--------+----+----+--+--+--+
+|   |0-25|25-50| 50-100 |100+|Sum |R1|R2|R3|
++===+====+=====+========+====+====+==+==+==+
+|(a)|0.18| 0.39|    0.33|0.16|1.06| 1| 1| 0|
++---+----+-----+--------+----+----+--+--+--+
+|(b)|0.38|-0.27|    0.52|0.37|1.00| 1| 0| 1|
++---+----+-----+--------+----+----+--+--+--+
+|(c)|0.28| 0.27|    0.29|0.16|1.00| 1| 1| 1|
++---+----+-----+--------+----+----+--+--+--+
+
+Only **C** meets all three criteria.
+
+# A **complement**
+
+Think of thes as **left-overs**. 
+
+$1-P(A') = P(A)$
+
+It is useful when it is easier to compute $P(A')$ than $P(A)$.
+
+Going back to our distribution `(c)`, $P(0-100) = 1-P(100+) = 0.84$
+
+# Independence
+
+Two processes are **independent** if knowing about one provides no
+useful information about the second.
+
+In general, rolling a die or flipping a coin are independent.
+
+So we can use the **multiplication rule for independent processes**.
+
+For independent processes **A** and **B**,
+
+$P(A\ and\ B) = P(A) \times P(B)$
+
+Recall our **General Addition Rule**
+
+$P(A\ or\ B) = P(A) + P(B) - P(A\ and\ B)$
+
+
+
