@@ -75,8 +75,8 @@ that catches your eye, **Hypothesitis**.
 $P(H)$ -  You have hypothesitis.
 
 As you read through all the symptoms that you would have if you have
-hypothesitis. We can then say that the probability of symptoms,
-given hypothesitis is `0.95`.
+hypothesitis, you are pretty sure this describes your symptoms. We can
+then say that the probability of symptoms, given hypothesitis is `0.95`.
 
 $P(E \ |\ H) = 0.95$
 
@@ -125,6 +125,6 @@ depends on three things:
 - The prior probability of the hypothesis: $P(H)$
 - The prior probability of the evidence $P(E)$
 If you leave one of those three things out, you don't have a complete
-picture
+picture.
 
 
