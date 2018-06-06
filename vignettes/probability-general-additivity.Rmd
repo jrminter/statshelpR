@@ -18,15 +18,52 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
 suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
 ```
-# Introduction
+# Introduction to probability
 
-This example is adapted from an example from the OpenIntro
+This example is adapted from an example in the first 9:30 min from the
+OpenIntro
 [YouTube](https://youtu.be/rG-SLQ2uF8U?list=PLkIselvEzpM5EgoOajhw83Ax_FktnlD6n)
-channel.
+video.
 
-# The Problem
+Start with a fair die. It has six sides. What is the probability of
+rolling a 1?     
+$P(1) = \frac{1}{6}$. Indeed the probability of all the
+other numbers is $P(n) = \frac{1}{6}$.
 
-## Use a standard card deck
+We can also ask, what is the probability of rolling a 1 or a 2?
+$P(1 \ or\ 2) = \frac{2}{6} = \frac{1}{3}$ since all of the numbers
+are equally probable.
+
+Probability is used to answer the question of how likely something is
+to happen. Usually it is used to model **random processes**. It can also
+be used for **non-random processes**. The stock market is one such
+example. It looks random but each event is the result of someone's choice
+about what they want to buy or sell. But the system as a whole looks random.
+
+# Disjoint or mutually-exclusive event
+
+First we consider **disjoint** or **mutually-exclusive** events.
+Rolling a single die is one example. We only get 1 result for a
+single roll. There is a rule associated with disjoint events,
+like rolling a die. If we want to know:    
+
+$P(1\ or\ 2) = P(1) + P(2) = \frac{1}{3}$
+
+because each of the outcomes has the same probability. We could also
+extend this for more mutually exclusive outcomes such as    
+
+$P(1\ or\ 2\ or\ 3\ or\ 5) = P(1) + P(2) + P(3) + P(5) = \frac{4}{6} = \frac{2}{3}$.
+
+We are using what is called the **Addition Rule for Disjoint Events**.
+
+Next we want to knpw what happens with events that are **not Disjoint**.
+
+
+
+
+# Dealing with events that are not disjoint
+
+## Using a standard card deck
 
 We want to consider an example where we draw cards from a standard
 card deck, shown below.
@@ -53,7 +90,11 @@ grid.raster(img)
 Note the following probabilities:
 
 $P(diamond) = P(D) = \frac{13}{54} = \frac{1}{4} = 0.25$    
-$P(face\ card) = P(FC) = \frac{12}{52} = \frac{3}{13} \approx 0.231$    
+$P(face\ card) = P(FC) = \frac{12}{52} = \frac{3}{13} \approx 0.231$
+
+If we want to know $P(diamond\ or\ face\ card)$ we
+**can't use the additivity rule for disjoint events** because
+**not all face cards are diamonds**.
 
 ## The General Additivity Rule
 
