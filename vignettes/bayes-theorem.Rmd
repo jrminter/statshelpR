@@ -1,0 +1,130 @@
+---
+title: "An introduction to Bayes Theorem"
+# author: "John Minter"
+date: "Last updated: 2018-06-06"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{An introduction to Bayes Theorem}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+```
+# Introduction
+
+This example is a summary of a video by Ian Olasov (CUNY) in
+[this](https://www.youtube.com/watch?v=OqmJhPQYRc8) YouTube video.
+
+We begin with a definition,
+**Probability**: The chance or likelihood that a proposition is true.
+
+# Examples using Bayes Theorem
+
+## Example 1
+
+**Example**: One student in a class of 20 has the flu. You do not know
+who. The probability that one student in the class, **Sally**, has the
+flu is `1/20` or `5%` (`.05`). This is called your **prior probability**
+because it is your estimate of the probability **prior** to finding out
+any new information.
+
+$$P(Sally \ has \ the \ flu) = 0.05$$
+
+Suppose that the class has 5 girls and the patient was a girl, your
+probability that Sally has the flu would go up to `1/5` (`0.20`). On the
+other hand if you found out that the patient was a boy, your probability
+that Sally has the flu would go down to `0`. Since we do not yet know
+whether the patient is a boy or a girl, we call these
+**conditional probabilities**.
+
+$$P(Sally \ has \ the \ flu\ |\ patient \ is \ a \ girl) = 0.20$$
+$$P(Sally \ has \ the \ flu\ |\ patient \ is \ a \ boy)  = 0 $$
+
+The vertical line tells us that we are talking about
+**conditional probabilities**.
+
+**Bayes Theorem** shows us how to calculate our conditional probabilities
+
+Bayes theorem says that the probability of a hypothesis, **H**,
+conditional on a new piece of evidence, **E**, is
+
+$$P(H | E) = \frac{ P(E|H) \ P(H)}{P(E)}$$
+In other words it tells us the three ingredients that go into the
+probability of a hypothesis **conditional** on some evidence:
+
+1. The probability of the evidence given the hypothesis
+2. The prior probability of the hypothesis
+3. The prior probability of the evidence
+
+## Example 2
+
+Let's consider another example.
+
+Imagine that one morning you do not feel well and go on WebMD to try to
+figure out what is wrong. You browse around until you find an illness
+that catches your eye, **Hypothesitis**.
+
+$P(H)$ -  You have hypothesitis.
+
+As you read through all the symptoms that you would have if you have
+hypothesitis. We can then say that the probability of symptoms,
+given hypothesitis is `0.95`.
+
+$P(E \ |\ H) = 0.95$
+
+You begin to freak out. But then you remember Bayes Theorem. It tells
+you that there are two more things that you need to know to figure out
+the probability that you have hypothesitis.
+
+1. The prior probability that you would come down with hypothesitis,
+$P(H)$
+2. The prior probability that you would have the symptoms that you
+actually have, $P(E)$
+
+With a little more Googling you discover that the disease is extremely
+rare, only 1/100000 people have it, so $P(H) = 0.00001$.
+
+Next we ask, "what kind of symptoms are they?" Let's say they are a
+headache and a runny nose. Lots of people have them. Google tells you
+1 in 100. So $P(E)$, the prior probability of having these symptoms,
+is So $P(E) = 0.01$.
+
+At last, you know everything you need to know to figure out the
+probability that you have hypothesitis, given your symptoms.
+Bayes theorem tells us that,
+
+$P(H|E) = \frac{0.95 \times\ 0.00001}{.01} = 0.00095$
+
+or a little less than 1 in 1000.
+
+# A common error
+
+Bayes Theorem is extremely helpful in figuring out what to make of some
+new piece of evidence. People often ignore the prior of the hypothesis
+or treat $P(H|E)$ as $P(E|H)$, which it is **not**. This mistake is
+sometimes called the **base rate fallacy**. Note that in our last
+example $P(H|E)$ and $P(E|H)$ differ by a factor of $10^3$. 
+
+# Summary
+
+1. Bayes Theorem shows us how to calculate **conditional probabilities**
+or the probability that you should assign to some hypothesis given a
+piece of evidence.
+
+2. The conditional probability of a hypothesis given new evidence
+depends on three things:
+- The conditional probability of E given H: $P(E|H$
+- The prior probability of the hypothesis: $P(H)$
+- The prior probability of the evidence $P(E)$
+If you leave one of those three things out, you don't have a complete
+picture
+
+
