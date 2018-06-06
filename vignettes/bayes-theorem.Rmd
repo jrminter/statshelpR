@@ -103,7 +103,7 @@ Bayes theorem tells us that,
 
 $P(H|E) = \frac{0.95 \times\ 0.00001}{.01} = 0.00095$
 
-or a little less than 1 in 1000.
+or a little less than 1 in 1000. What a relief!
 
 # A common error
 
