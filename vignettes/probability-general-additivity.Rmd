@@ -1,0 +1,67 @@
+---
+title: "Probability: The general additivity rule"
+# author: "John Minter"
+date: "Last updated: 2018-06-06"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Probability: The general additivity rule}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+```
+# Introduction
+
+This example is adapted from an example from the OpenIntro
+[YouTube](https://youtu.be/rG-SLQ2uF8U?list=PLkIselvEzpM5EgoOajhw83Ax_FktnlD6n)
+channel.
+
+# The Problem
+
+## Use a standard card deck
+
+We want to consider an example where we draw cards from a standard
+card deck, shown below.
+
+```{r cardDeck, fig.width=7, fig.height=1.25, fig.cap="A standard 52 card deck containing clubs, diamonds, hearts, and spades", echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("./inc/std-card-deck.png")
+grid.raster(img)
+```
+
+## Problem Statement
+
+Compute the probability of drawing a **diamond** or a **face card**
+
+## A Venn Diagram helps
+
+```{r VennDiagram, fig.align='center', fig.width=4, fig.cap="A Venn Diagram of the problem",echo=FALSE}
+
+img <- readPNG("./inc/card-example-venn-diagram.png")
+grid.raster(img)
+```
+
+Note the following probabilities:
+
+$P(diamond) = P(D) = \frac{13}{54} = \frac{1}{4} = 0.25$    
+$P(face\ card) = P(FC) = \frac{12}{52} = \frac{3}{13} \approx 0.231$    
+
+## The General Additivity Rule
+
+$P(A \ or\ B) = P(A) + P(B) - P(A\ and \ B)$
+
+so our answer is
+
+$P(D \ or\ FC) = \frac{13}{52} + \frac{12}{52} - \frac{3}{52} = \frac{22}{52} = \frac{11}{26} \approx 0.423$
+
+and is consistent with our Venn Diagram above.
+
