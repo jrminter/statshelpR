@@ -20,10 +20,7 @@ suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2
 ```
 # An example application
 
-This example is adapted from a YouTube video by  
-[OpenIntro](https://www.youtube.com/watch?v=S_p5D-YXLS4)
-and plotting help from
-[dkmathstats.com](http://dkmathstats.com/plotting-normal-distributions-in-r-using-ggplot2/).
+This example is adapted from a YouTube video by [OpenIntro](https://www.youtube.com/watch?v=S_p5D-YXLS4) and plotting help from [dkmathstats.com](http://dkmathstats.com/plotting-normal-distributions-in-r-using-ggplot2/).
 
 Our example problem considers a population of brushtail possums.
 
