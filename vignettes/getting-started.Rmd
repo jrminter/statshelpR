@@ -28,7 +28,25 @@ software there is a learning curve. Happily, the `#rstats` community
 on Twitter is very helpful. Examples are typically a Google search
 away. The
 [Modern Dive](https://ismayc.github.io/moderndiver-book/2-getting-started.html)
-text by Chester Ismay and Albert Y. Kim is a helpful resource.
+text by Chester Ismay and Albert Y. Kim is a helpful resource. So is
+the free [OpenIntro](https://www.openintro.org/stat/textbook.php)
+textbook and their
+[playlist](https://www.youtube.com/channel/UCPAHrheP8gcpml0tSVhKOWg)
+of YouTube videos. They also have the instructions to use
+TI calculators.
+
+You will enjoy enjoy yourself if you follow this great advice from
+[Kim Cressman](https://twitter.com/swmpkim/status/1004555112587710465): 
+
+> Don't feel like you have to **learn R**, like you have to know
+> *everything* before you can do *anything*.
+>
+> Just pick a thing you want to do, and learn how to do it.
+>
+> It's easier to digest when you have a goal - learn the steps that
+> get you there.
+
+
 
 ## Benefits of using R and RStudio
 
