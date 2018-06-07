@@ -134,6 +134,7 @@ plt1 <- ggplot(xvalues, aes(x=xvalues)) +
 
 print(plt1)
 ```
+
 # Possums < 89 mm in length
 
 We can also ask another question:
