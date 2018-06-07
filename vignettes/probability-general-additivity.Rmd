@@ -56,7 +56,7 @@ $P(1\ or\ 2\ or\ 3\ or\ 5) = P(1) + P(2) + P(3) + P(5) = \frac{4}{6} = \frac{2}{
 
 We are using what is called the **Addition Rule for Disjoint Events**.
 
-Next we want to knpw what happens with events that are **not Disjoint**.
+Next we want to know what happens with events that are **not Disjoint**.
 
 
 

@@ -52,7 +52,7 @@ Only **C** meets all three criteria.
 
 # A **complement**
 
-Think of thes as **left-overs**. 
+Think of these as **left-overs**. 
 
 $1-P(A') = P(A)$
 

@@ -8,7 +8,7 @@ output:
     toc: true
     toc_depth: 2
 vignette: >
-  %\VignetteIndexEntry{Computing the Confidence Level to use for Tstar}
+  %\VignetteIndexEntry{Computing the Confidence Level to use for T-star}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
