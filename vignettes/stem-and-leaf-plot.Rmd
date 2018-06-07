@@ -1,7 +1,7 @@
 ---
 title: "Making a Stem and Leaf Plot"
 # author: "John Minter"
-date: "Last updated: 2018-06-03"
+date: "Last updated: 2018-06-07"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -10,7 +10,7 @@ output:
 vignette: >
   %\VignetteIndexEntry{Making a Stem and Leaf Plot}
   %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 
