@@ -1,0 +1,92 @@
+---
+title: "Computing the Confidence Level to use for $t^*$"
+# author: "John Minter"
+date: "Last updated: 2018-06-07"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Computing the Confidence Level to use for Tstar}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+```
+
+# Introduction
+
+The [stats4stem.org](http://www.stats4stem.org/r-t-distribution)
+website provides a table with the desired confidence level for
+a $t^*$ calculation and the the confidence level entered in R's
+`qt()` function. This is presented without explanation.
+
+This is an exploratory data analysis
+
+We can load the data in R as shown below.
+
+```{r loadData}
+library(statshelpR)
+library(pander)
+
+data(tstar_cl_r)
+pander(tstar_cl_r)
+```
+
+We can plot the data and fit it to a linear model
+
+```{r plotData, fig.width=6.5}
+
+plt <-	ggplot(tstar_cl_r, aes(x=CL, y=R)) +
+		geom_point(color='black', size=2) +
+		xlab("CL") + ylab("R") +
+		ggtitle("R as a function of CL") +
+		theme(axis.text=element_text(size=12),
+			  axis.title=element_text(size=14),
+			  plot.title = element_text(hjust = 0.5))
+
+print(plt)
+```
+
+Let's do the linear model
+
+```{r linModel}
+fit <- lm(R ~ CL, data = tstar_cl_r)
+pander(summary(fit))
+```
+
+And let's update our plot with the predicted line.
+
+```{r updatePlot, fig.width=6.5}
+
+pred <- data.frame(R = predict(fit, tstar_cl_r))
+pred$CL <- tstar_cl_r$CL
+pander(pred)
+
+plt <- plt +  geom_line(color='red',data = pred, aes(x=CL, y=R))
+
+print(plt)
+```
+
+So our equation is $R = 0.5*CL + 0.5$
+
+```{r testSoln}
+CL <- tstar_cl_r$CL
+
+CL_to_R <- function(x){
+	R <- 0.5 * x + 0.5
+	return(R)
+}
+
+
+rVal <- sapply(CL, CL_to_R)
+
+dfCalc <- data.frame(CL=CL, R=rVal)
+pander(dfCalc)
+
+```
