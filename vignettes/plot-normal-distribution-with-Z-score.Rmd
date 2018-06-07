@@ -1,0 +1,230 @@
+---
+title: "Plot a normal distribution with Z scores"
+# author: "John Minter"
+date: "Last updated: 2018-06-07"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Plot a normal distribution with Z scores}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+```
+# An example application
+
+This example is adapted from a YouTube video by  
+[OpenIntro](https://www.youtube.com/watch?v=S_p5D-YXLS4)
+and plotting help from
+[dkmathstats.com](http://dkmathstats.com/plotting-normal-distributions-in-r-using-ggplot2/).
+
+Our example problem considers a population of brushtail possums.
+
+![A brushtail possum. Photo credit: Brisbane City Council](./inc/brushtail-possum.png)
+
+We are told that this population of brushtail possums have a
+**normal distribution** of lengths with a population mean
+($\mu$) of $92.6$ mm and a population standard deviation
+($\sigma$) of $3.6$ mm.
+
+# Our first plot
+
+To aid in plotting this distribution, we can define function in R
+to help us in plotting. First we will plot the distribution using
+length values. Note how we set the mean and standard deviation in
+the function.
+
+```{r helperFunction}
+possumDistn <- function(x){
+	dnorm(x, mean = 92.6, sd = 3.6)
+}
+```
+
+Let's start with a basic plot.
+
+```{r basicPlt, fig.width=7.25}
+lims <- c(80, 105)
+xvalues <- data.frame(x=lims)
+plt <- ggplot(xvalues, aes(x = xvalues)) +
+	stat_function(fun = possumDistn) +
+	xlim(lims) + xlab("possum length [mm]") +
+	ylab("density")
+print(plt)
+```
+
+Because this is a **normal distribution**, it is convenient to convert
+value into **Z-scores** where we transform the data values ($X$) using
+the equation:
+
+$$ Z = \frac{x - \mu}{\sigma}$$
+
+where $\mu$ is our estimate of the mean value for the population and
+$\sigma$ is our estimate of the standard deviation for the population.
+This is the "**standard form**" for the normal distribution.
+
+# Our first plot in standard form
+
+Our plot of the standard form looks like this:
+
+```{r normalPlt, fig.width=7.25}
+zLim = 3
+lims <- c(-zLim, zLim)
+xvalues <- data.frame(x=lims)
+zPlt <- ggplot(xvalues, aes(x = xvalues)) +
+		stat_function(fun = dnorm) +
+		scale_x_continuous(breaks = seq(from = -zLim, to = zLim, by = 1),
+						   limits = c(-zLim, zLim)) +
+		xlab("Z") +
+		ylab("density")
+print(zPlt)
+```
+
+We can build upon this plot as we ask questions about this distribution.
+
+# Possums < 98 mm in length
+
+Consider the following question:
+
+> What percentage of possums have a head length **smaller** than
+> 98 mm?
+
+First compute the Z value and then the required probability. Let's
+also make the output look nice by using the `pander` package to
+output a table:
+
+```{r qOne}
+library(pander)
+zVal1 <- (98 - 92.6)/3.6
+prob1 <- pnorm(zVal1)
+
+ans <- c(zVal1, prob1)
+names(ans) <- c("Z", "Probability")
+pander(ans)
+```
+
+To draw this on our graph, we need to make a shading function and add
+it to our plot. **Note**: Be careful here. The function only takes
+x values. The limit, `zVal1` is hard-coded. Make sure you don't redefine
+this variable! 
+
+```{r q1Shade, fig.width=7.25}
+shadeLower1 <- function(x){
+	val <- dnorm(x)
+	val[x >= zVal1] <- NA
+	return(val)
+}
+
+limV = 3
+xvalues <- data.frame(x = c(-limV, limV))
+plt1 <- ggplot(xvalues, aes(x=xvalues)) +
+		stat_function(fun = dnorm) +
+		stat_function(fun = shadeLower1, geom = "area", fill = "blue", alpha = 0.3 ) +
+		scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
+						   limits = c(-limV, limV)) +
+		xlab("Z") +
+		ylab("density") +
+		ggtitle("Possums with length smaller than 98 mm") +
+		theme(axis.text=element_text(size=12),
+			  axis.title=element_text(size=12),
+			  plot.title=element_text(hjust = 0.5)) # center the title
+
+print(plt1)
+```
+# Possums < 89 mm in length
+
+We can also ask another question:
+
+> What is the fraction of possums with a head length **less than**
+> 89 mm?
+
+Again we compute the Z-score.
+
+```{r qTwo}
+zVal2 <- (89 - 92.6)/3.6
+prob2 <- pnorm(zVal2)
+
+ans <- c(zVal2, prob2)
+names(ans) <- c("Z", "Probability")
+pander(ans)
+```
+
+To plot this we need to make a new shading function that will
+use the new value defined above. Note that we have to be careful
+to not re-define the variable `zVal2` and break the function.
+
+```{r q2Shade, fig.width=7.25}
+shadeLower <- function(x){
+	val <- dnorm(x)
+	val[x >= zVal2] <- NA
+	return(val)
+}
+
+limV = 3
+xvalues <- data.frame(x = c(-limV, limV))
+plt1 <- ggplot(xvalues, aes(x=xvalues)) +
+		stat_function(fun = dnorm) +
+		stat_function(fun = shadeLower, geom = "area", fill = "blue", alpha = 0.3 ) +
+		scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
+						   limits = c(-limV, limV)) +
+		xlab("Z") +
+		ylab("density") +
+		ggtitle("Possums with length smaller than 89 mm") +
+		theme(axis.text=element_text(size=12),
+			  axis.title=element_text(size=12),
+			  plot.title=element_text(hjust = 0.5)) # center the title
+		
+print(plt1)
+```
+
+# Possums between 89 and 98 mm in length
+
+Finally, we can ask about the fraction of possums with length between
+89 and 98 mm. We can compute this by difference.
+
+```{r diffVal}
+prob <- prob1-prob2
+names(prob) <- "prob"
+pander(prob)
+```
+
+We can also plot this. Note that we use both `zVal1` and `zVal2` in this
+function.
+
+
+```{r q3Shade, fig.width=7.25}
+shadeBetween <- function(x){
+	val <- dnorm(x)
+	val[x >= zVal1] <- NA
+	val[x <= zVal2] <- NA
+	return(val)
+}
+
+limV = 3
+xvalues <- data.frame(x = c(-limV, limV))
+plt3 <- ggplot(xvalues, aes(x=xvalues)) +
+		stat_function(fun = dnorm) +
+		stat_function(fun = shadeBetween, geom = "area", fill = "blue", alpha = 0.3 ) +
+		scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
+						   limits = c(-limV, limV)) +
+		xlab("Z") +
+		ylab("density") +
+		ggtitle("Possums with length between 89 and 98 mm") +
+		theme(axis.text=element_text(size=12),
+			  axis.title=element_text(size=12),
+			  plot.title=element_text(hjust = 0.5)) # center the title
+		
+print(plt3)
+```
+
+
+
+
+
+
