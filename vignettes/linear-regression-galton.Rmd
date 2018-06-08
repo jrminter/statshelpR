@@ -1,0 +1,81 @@
+---
+title: "Linear regression analysis of height data"
+# author: "John Minter"
+date: "Last updated: 2018-06-08"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Linear regression analysis of height data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(mosaic))))
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(plotly))))
+```
+# Introduction
+
+Linear regression is a useful technique in many sciences. One of the
+first studies was performed by Francis Galton, the nephew of
+Charles Darwin. Galton wanted to study the relationship between the
+height of parents and their children.
+
+We can get the data from the `mosaic` package.
+
+```{r getData, warning=FALSE}
+library(mosaic)
+library(pander)
+data(Galton)
+pander(head(Galton, 10))
+
+```
+We want to add a column of data for the `average parent height`
+
+```{r}
+Galton$midparentheight=(Galton$father+Galton$mother)/2
+```
+
+Let's plot the data and let `ggplot2()` add the fits so we can
+easily see the results. We will use the `facet_wrap()` option
+to separate male and female genders.
+
+
+```{r plotResults, fig.width=7.25, warning=FALSE, message=FALSE}
+library(grid)
+plt <-	ggplot(data = Galton, aes(x = height, y = midparentheight)) +
+		geom_point(aes(colour = sex), size = 1.5) +
+        geom_smooth(aes(colour = sex, fill = sex), method = "lm" ,size = .5) +
+		facet_wrap(~ sex) +
+		ggtitle("Galton height data with linear models") +
+		theme(panel.spacing = unit(2, "lines"),
+			  axis.text=element_text(size=12),
+			  axis.title=element_text(size=12),
+			  plot.title=element_text(hjust = 0.5)) # center the title
+
+print(plt)
+```
+
+Let's look more closely at the fits.
+
+```{r testFits}
+female <- Galton[which(Galton$sex=='F'), ]
+femaleLM <- lm(height ~ midparentheight, data = female)
+pander(summary(femaleLM))
+
+male <- Galton[which(Galton$sex=='M'), ]
+maleLM <- lm(height ~ midparentheight, data = male)
+pander(summary(maleLM))
+
+```
+
+We see that both fits are statistically significant for their
+**respective populations**. That said, the **variance** in the
+population tells us that the model cannot tell us much about
+a **single individual**.
