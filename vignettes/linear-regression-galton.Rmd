@@ -25,7 +25,10 @@ suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(plotly)
 Linear regression is a useful technique in many sciences. One of the
 first studies was performed by Francis Galton, the nephew of
 Charles Darwin. Galton wanted to study the relationship between the
-height of parents and their children.
+height of parents and their children. We will discover that there
+is a significant linear trend for the **population** but that the
+individual variability means that the prediction is not very certain
+for a specific individual.
 
 We can get the data from the `mosaic` package.
 
@@ -41,6 +44,7 @@ We want to add a column of data for the `average parent height`
 ```{r}
 Galton$midparentheight=(Galton$father+Galton$mother)/2
 ```
+# Plot the data for both males and females
 
 Let's plot the data and let `ggplot2()` add the fits so we can
 easily see the results. We will use the `facet_wrap()` option
@@ -62,7 +66,7 @@ plt <-	ggplot(data = Galton, aes(x = height, y = midparentheight)) +
 print(plt)
 ```
 
-Let's look more closely at the fits.
+# Look more closely at the fits
 
 ```{r testFits}
 female <- Galton[which(Galton$sex=='F'), ]
@@ -74,6 +78,8 @@ maleLM <- lm(height ~ midparentheight, data = male)
 pander(summary(maleLM))
 
 ```
+
+# Summary
 
 We see that both fits are statistically significant for their
 **respective populations**. That said, the **variance** in the
