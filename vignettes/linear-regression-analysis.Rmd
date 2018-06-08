@@ -1,7 +1,7 @@
 ---
 title: "Linear regression analysis in R"
 # author: "John Minter"
-date: "Last updated: 2018-06-07"
+date: "Last updated: 2018-06-08"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -28,7 +28,7 @@ pre-processing of the data to get it into a linear form.
 We are analyzing the spacings of maxima and minima in the rings in the image
 below.
 
-![Optical diffraction patter from a TEM negative. The cross-hatch in te center is an artifact of printing in a book. We are interested in the spacing between the maxima and minima in the circular rings.](./inc/optical-diffraction.png)
+![Optical diffraction patter from a TEM negative. The cross-hatch in the center is an artifact of printing in a book. We are interested in the spacing between the maxima and minima in the circular rings.](./inc/optical-diffraction.png)
 
 The measurements are stored in a dataframe. First we set some microscope
 parameters and then read in the data.
@@ -38,25 +38,28 @@ library(statshelpR)
 library(pander)
 
 kV <- 100. # The microscope was operated at 100 kV
-Cs <- 2.0  # The microscope had a spherical aberraction coefficent of 2.0 mm
+Cs <- 2.0  # The microscope had a spherical aberration coefficient of 2.0 mm
 
 data(olk_data)
 pander(olk_data)
 ```
 
-Now lets's process the data. We will write a function to compute the
-wavelength of the elctron beam.
+Before process the data, we will need a function to compute the
+wavelength of the electron beam.
 
 ```{r wavelengthFunction}
 fWavelength <- function (fVoltk){
-	# A function to compute the electron wavelendth from the voltake
+	# A function to compute the electron wavelength from the voltage
 	result <- 0.387818/sqrt(fVoltk * (1.0 + 0.978459e-3 * fVoltk))
 	return(result)
 }
 
 ```
 
-Now we process the data in our datafame to make a linear equation
+Now we can process the data in our datafame to make a linear equation. This
+is a common practice in chemistry and physics. The details are beyond the scope
+of our example. The code below transforms our data into the desired linear
+form.
 
 ```{r processDataframe}
 
@@ -79,10 +82,18 @@ dfFit <- data.frame(x=x, y=y)
 pander(dfFit)
 ```
 
-Now do the linear regression
+Now we can calculate the linear regression and look at the default output.
 
 ```{r doLinearFit}
 fit <- lm(y ~ x)
+
+pander(summary(fit))
+```
+
+We can compute some other quantities that help us calculate our parameters.
+The details are beyond the scope of this example.
+
+```{r otherComp, echo=FALSE}
 
 b <- fit$coefficients[[1]]
 a <- fit$coefficients[[2]]
@@ -96,7 +107,7 @@ trData <- data.frame(X=x,Y=y)
 fmeans <- mean(trData)
 nL = length(x)
 
-pander(fcov <- (nL-1) * var(trData))
+fcov <- (nL-1) * var(trData)
 
 xbar <- fmeans[1]
 ybar <- fmeans[2]
@@ -130,6 +141,9 @@ fit.conf <- predict(fit, interval="conf", newdata = conf.frame)
 
 ```
 
+Next we plot our results. The medium gray region is the uncertainty
+of the position of the line. Notice the results near the ends of the
+data are less certain than those in the middle.
 
 ```{r plotResults, fig.width=7.25}
 plt <-	ggplot(data=dfFit, aes(x=x, y=y)) +
@@ -146,7 +160,9 @@ print(plt)
 
 ```
 
-Output results
+Finally, we output the key results as a table. The $R^2$ and $adjusted\ R^2$
+values are measures of the **goodness of fit**. These should be as close to 1
+as possible. This is a **very good fit**.
 
 ```{r output}
 
