@@ -30,6 +30,8 @@ below.
 
 ![Optical diffraction patter from a TEM negative. The cross-hatch in the center is an artifact of printing in a book. We are interested in the spacing between the maxima and minima in the circular rings.](./inc/optical-diffraction.png)
 
+# Load the data
+
 The measurements are stored in a dataframe. First we set some microscope
 parameters and then read in the data.
 
@@ -43,6 +45,8 @@ Cs <- 2.0  # The microscope had a spherical aberration coefficient of 2.0 mm
 data(olk_data)
 pander(olk_data)
 ```
+
+# Convert the data into a linear form suitable for a linear regression.
 
 Before process the data, we will need a function to compute the
 wavelength of the electron beam.
@@ -81,6 +85,8 @@ for (i in 1:nr){
 dfFit <- data.frame(x=x, y=y)
 pander(dfFit)
 ```
+
+# Calculate the linear regression
 
 Now we can calculate the linear regression and look at the default output.
 
@@ -141,6 +147,8 @@ fit.conf <- predict(fit, interval="conf", newdata = conf.frame)
 
 ```
 
+# Plot the results
+
 Next we plot our results. The medium gray region is the uncertainty
 of the position of the line. Notice the results near the ends of the
 data are less certain than those in the middle.
@@ -159,6 +167,8 @@ plt <-	ggplot(data=dfFit, aes(x=x, y=y)) +
 print(plt)
 
 ```
+
+# Output the results we need
 
 Finally, we output the key results as a table. The $R^2$ and $adjusted\ R^2$
 values are measures of the **goodness of fit**. These should be as close to 1
