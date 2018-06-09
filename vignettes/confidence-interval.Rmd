@@ -106,6 +106,7 @@ What does 95% confidence mean? Suppose we took many samples and built a
 95% confidence interval from each sample. Then 95% of those intervals
 would contain the actual mean.
 
+
 ```{r showImg,fig.width=7.5,echo=FALSE}
 manySampImg <- readPNG('inc/many-samples.png')
 grid.raster(manySampImg)
@@ -113,6 +114,10 @@ grid.raster(manySampImg)
 Note that **only one of these 25 estimates**
 **did not capture the true mean of the population**. 96% of the
 samples captured the true mean.
+
+Let's take 100,000 samples, calculate the mean of each, and plot
+them in a histogram to get an especially accurate depiction of the
+sampling distribution.
 
 ```{r SimNormal, fig.width=7.5}
 df <- data.frame(obs=meanTime25)
