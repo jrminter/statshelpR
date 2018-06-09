@@ -22,6 +22,8 @@ suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(plotly)
 suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(openintro))))
 library(png)
 library(grid)
+library(statshelpR)
+data(meanTime25)
 ```
 # Introduction
 
@@ -62,7 +64,7 @@ Note that **only one of these 25 estimates**
 samples captured the true mean.
 
 ```{r SimNormal, fig.width=7.5}
-df <- data.frame(obs=rnorm(10000, mean = 94.51919, sd = 2))
+df <- data.frame(obs=meanTime25)
 
 
 plt <-	ggplot(data=df, aes(obs)) + 
