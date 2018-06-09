@@ -1,0 +1,103 @@
+---
+title: "Confidence Intervals"
+# author: "John Minter"
+date: "Last updated: 2018-06-08"
+output:
+  rmarkdown::html_vignette:
+    number_sections: true
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{Confidence Intervals}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(mosaic))))
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(plotly))))
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(openintro))))
+library(png)
+library(grid)
+```
+# Introduction
+
+A point estimate provides a single plausible value for a parameter.
+However, a point estimate is rarely perfect. Usually there is some
+error in the estimate. To account for this error, we provide a
+plausable range of values for the parameter.
+
+# An approximate 95% confidence level
+
+A single point estimate such as the **sample mean** will not likely be
+equal to the exact **population parameter** like the true population
+mean. A plausable range of values is called a **confidence interval**.
+
+## The standard error
+
+The **standard error** is a measure of the uncertainty associated with
+the point estimate and provides a guide for how large we should make the
+confidence level. The standard error represents the standard deviation
+associated with the estimate.
+
+If the interval spreads out 2 standard errors from the point estimate,
+we can be roughly 95% **confident** that we have captured the true
+parameter.
+
+$$point\ etimate \pm 2 \times SE$$
+
+What does 95% confident mean? Suppose we took many samples and built a
+95% confidence interval from each sample. Then 95% of those intervals
+would contain the actual mean.
+
+```{r showImg,fig.width=7.5,echo=FALSE}
+manySampImg <- readPNG('inc/many-samples.png')
+grid.raster(manySampImg)
+```
+Note that **only one of these 25 estimates**
+**did not capture the true mean of the population**. 96% of the
+samples captured the true mean.
+
+```{r SimNormal, fig.width=7.5}
+df <- data.frame(obs=rnorm(10000, mean = 94.51919, sd = 2))
+
+
+plt <-	ggplot(data=df, aes(obs)) + 
+		geom_histogram(breaks=seq(85, 105, by = .5), col="black",
+					   fill="blue", alpha = .5) +
+		ylab(label="frequency") + xlab("sample mean") +
+		ggtitle("Sample Mean Distribution") +
+		theme(axis.text=element_text(size=12),
+			  axis.title=element_text(size=14),
+			  plot.title = element_text(hjust = 0.5)) # center the title
+
+print(plt)
+
+```
+
+And we can compute a **normal probability plot**:
+
+```{r qqplotl, fig.width=7.5}
+qqPlt <- ggplot(data=df, aes(sample=obs))+ stat_qq() +
+		 ylab(label="sample means") + xlab("theoretical quantiles") +
+		 ggtitle("Normal Probability Plot") +
+		 theme(axis.text=element_text(size=12),
+		 	   axis.title=element_text(size=14),
+			   plot.title = element_text(hjust = 0.5)) # center the title
+		
+
+print(qqPlt)
+```
+
+
+
+# A sampling distribution for the mean
+
+# Changing the confidence level
+
+# Proper interpretation of confidence levels
+
+
