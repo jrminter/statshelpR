@@ -131,7 +131,8 @@ print(plt)
 
 ```
 
-And we can compute a **normal probability plot**:
+And we can compute a **normal probability plot** to show that the
+distribution is indeed normal.
 
 ```{r qqplotl, fig.width=7.5}
 qqPlt <- ggplot(data=df, aes(sample=obs))+ stat_qq() +
