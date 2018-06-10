@@ -23,6 +23,7 @@ suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(openint
 library(png)
 library(grid)
 library(statshelpR)
+library(pander)
 data(meanTime25)
 ```
 # Introduction
@@ -98,7 +99,7 @@ If the interval spreads out 2 standard errors from the point estimate,
 we can be roughly 95% **confident** that we have captured the true
 parameter.
 
-$$point\ etimate \pm 2 \times SE$$
+$$point\ estimate \pm 2 \times SE$$
 
 # A sampling distribution for the mean
 
@@ -172,7 +173,16 @@ There are 3 components:
 provides guidance in how to make intervals with new confidence
 levels: point estimate $\pm 1.96 \times SE$ To create a 99%
 confidence interval we change the point estimate to 
-$\pm 2.58 \times SE$. 
+$\pm 2.58 \times SE$. Our `statshelpR` package supplies the
+function `calc_z_star` to compute this value. An example to
+compute $Z^*$ for a 99% confidence interval is shown below:
+
+```{r calc_z_star_99_pct}
+
+z_star <- calc_z_star(0.99)
+names(z_star) <- "z_star"
+pander(z_star)
+```
 
 2. **Conditions required** for the sampling distribution of $\bar{x}$
 is nearly normal and the estimate of the standard error is sufficiently

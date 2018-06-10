@@ -2,6 +2,7 @@
 
 export(binomcdf)
 export(binompdf)
+export(calc_z_star)
 export(chi2_star_upper)
 export(stem_leaf_plot)
 export(var_interval)
