@@ -33,7 +33,8 @@ the free [OpenIntro](https://www.openintro.org/stat/textbook.php)
 textbook and their
 [playlist](https://www.youtube.com/channel/UCPAHrheP8gcpml0tSVhKOWg)
 of YouTube videos. They also have the instructions to use
-TI calculators.
+TI calculators. There is also a github repository for the
+[OpenIntroLabs](https://github.com/andrewpbray/oiLabs-base-R.git). Most of these were written by Andrew Bray and Mine Çetinkaya-Rundel.
 
 You will enjoy enjoy yourself if you follow this great advice from
 [Kim Cressman](https://twitter.com/swmpkim/status/1004555112587710465): 
