@@ -36,6 +36,13 @@ of YouTube videos. They also have the instructions to use
 TI calculators. There is also a github repository for the
 [OpenIntroLabs](https://github.com/andrewpbray/oiLabs-base-R.git). Most of these were written by Andrew Bray and Mine Çetinkaya-Rundel.
 
+Professor Ed Boone of Virginia Commonwealth University has a
+YouTube playlist of
+[**short** videos](https://www.youtube.com/playlist?list=PLjWSgPmViK-P3hUt5brWrq19NizFKcNyc)
+(typically 3-15 min) for his Statistics 321 class. The first 79 videos
+are examples of common operations in R. This is a good place to
+look for help on how to do something...
+
 You will enjoy enjoy yourself if you follow this great advice from
 [Kim Cressman](https://twitter.com/swmpkim/status/1004555112587710465): 
 
