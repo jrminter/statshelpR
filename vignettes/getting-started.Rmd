@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with R and RStudio for Statistics"
 # author: "John Minter"
-date: "Last updated: 2018-06-12"
+date: "Last updated: 2018-06-16"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -16,7 +16,7 @@ vignette: >
 
 ```{r, echo=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
-suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(ggplot2))))
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(tidyverse))))
 ```
 # Introduction
 
@@ -174,3 +174,43 @@ did not work as you expected.
 3. Make a **minimum reproducible example** that works with a simple
 data set that is easily available. Explain what did not work as
 expected.
+
+# Data Visualization
+
+> "The simple graph has brought more information to the data analyst’s
+> mind than any other device."     
+> — John Tukey
+
+> "You can observe a lot by just watching."    
+> - Yogi Berra
+
+## An example: Automobile miles per gallon
+
+The `tidyverse` package comes with a data set of mpg for different
+types of automobiles.
+
+```{r LoadMpg}
+summary(mpg)
+```
+
+We can visualize the relationship by plotting the data, plotting the
+highway mileage (`hwy`) as a function of the engine displacement
+(`displ`) for `r nrow(mpg)` automobile models.
+
+```{r firstMpgPlot, fig.width=7.5}
+plt <- ggplot(data = mpg) + 
+       geom_point(mapping = aes(x = displ, y = hwy))
+print(plt)
+```
+
+We see that there is a lot of variability. We might want to know how
+different types of cars behave. We can use color to help us.
+
+```{r secondMpgPlot, fig.width=7.5}
+plt <- ggplot(data = mpg) + 
+       geom_point(mapping = aes(x = displ, y = hwy, color = class))
+print(plt)
+```
+This tells us much more. Note how subcompact cars perform much better
+than SUVs as pickups. Data visualizatuions like this can help you buy
+a car that better meets your needs.
