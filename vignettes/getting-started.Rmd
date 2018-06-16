@@ -212,5 +212,5 @@ plt <- ggplot(data = mpg) +
 print(plt)
 ```
 This tells us much more. Note how subcompact cars perform much better
-than SUVs as pickups. Data visualizatuions like this can help you buy
+than SUVs as pickups. Data visualizations like this can help you buy
 a car that better meets your needs.
