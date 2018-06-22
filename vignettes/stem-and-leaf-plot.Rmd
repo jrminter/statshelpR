@@ -1,7 +1,7 @@
 ---
 title: "Making a Stem and Leaf Plot"
 # author: "John Minter"
-date: "Last updated: 2018-06-07"
+date: "Last updated: 2018-06-22"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -32,10 +32,10 @@ and recorded as follows:
 
 ```{r inputData}
 dat <- c(59.2, 61.5, 62.3, 61.4, 60.9, 59.8,
-		 60.5, 59.0, 61.1, 60.7, 61.6, 56.3,
-		 61.9, 65.7, 60.4, 58.9, 59.0, 61.2,
-		 62.1, 61.4, 58.4, 60.8, 60.2, 62.7,
-		 60.0, 59.3, 61.9, 61.7, 58.4, 62.2)
+         60.5, 59.0, 61.1, 60.7, 61.6, 56.3,
+         61.9, 65.7, 60.4, 58.9, 59.0, 61.2,
+         62.1, 61.4, 58.4, 60.8, 60.2, 62.7,
+         60.0, 59.3, 61.9, 61.7, 58.4, 62.2)
 ```
 
 ## Make the plots

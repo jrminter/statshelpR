@@ -1,7 +1,7 @@
 ---
 title: "Plot a normal distribution with Z scores"
 # author: "John Minter"
-date: "Last updated: 2018-06-07"
+date: "Last updated: 2018-06-20"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -40,7 +40,7 @@ the function.
 
 ```{r helperFunction}
 possumDistn <- function(x){
-	dnorm(x, mean = 92.6, sd = 3.6)
+  dnorm(x, mean = 92.6, sd = 3.6)
 }
 ```
 
@@ -50,9 +50,9 @@ Let's start with a basic plot.
 lims <- c(80, 105)
 xvalues <- data.frame(x=lims)
 plt <- ggplot(xvalues, aes(x = xvalues)) +
-	stat_function(fun = possumDistn) +
-	xlim(lims) + xlab("possum length [mm]") +
-	ylab("density")
+       stat_function(fun = possumDistn) +
+       xlim(lims) + xlab("possum length [mm]") +
+       ylab("density")
 print(plt)
 ```
 
@@ -75,11 +75,9 @@ zLim = 3
 lims <- c(-zLim, zLim)
 xvalues <- data.frame(x=lims)
 zPlt <- ggplot(xvalues, aes(x = xvalues)) +
-		stat_function(fun = dnorm) +
-		scale_x_continuous(breaks = seq(from = -zLim, to = zLim, by = 1),
-						   limits = c(-zLim, zLim)) +
-		xlab("Z") +
-		ylab("density")
+        stat_function(fun = dnorm) +
+        scale_x_continuous(breaks = seq(from = -zLim, to = zLim, by = 1), limits = c(-zLim, zLim)) +
+        xlab("Z") + ylab("density")
 print(zPlt)
 ```
 
@@ -113,25 +111,23 @@ this variable!
 
 ```{r q1Shade, fig.width=7.25}
 shadeLower1 <- function(x){
-	val <- dnorm(x)
-	val[x >= zVal1] <- NA
-	return(val)
+  val <- dnorm(x)
+  val[x >= zVal1] <- NA
+  return(val)
 }
 
 limV = 3
 xvalues <- data.frame(x = c(-limV, limV))
 plt1 <- ggplot(xvalues, aes(x=xvalues)) +
-		stat_function(fun = dnorm) +
-		stat_function(fun = shadeLower1, geom = "area", fill = "blue", alpha = 0.3 ) +
-		scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
-						   limits = c(-limV, limV)) +
-		xlab("Z") +
-		ylab("density") +
-		ggtitle("Possums with length smaller than 98 mm") +
-		theme(axis.text=element_text(size=12),
-			  axis.title=element_text(size=12),
-			  plot.title=element_text(hjust = 0.5)) # center the title
-
+        stat_function(fun = dnorm) +
+        stat_function(fun = shadeLower1, geom = "area", fill = "blue", alpha = 0.3 ) +
+        scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
+                           limits = c(-limV, limV)) +
+        xlab("Z") + ylab("density") +
+        ggtitle("Possums with length smaller than 98 mm") +
+        theme(axis.text=element_text(size=12),
+              axis.title=element_text(size=12),
+              plot.title=element_text(hjust = 0.5)) # center the title
 print(plt1)
 ```
 
@@ -159,25 +155,24 @@ to not re-define the variable `zVal2` and break the function.
 
 ```{r q2Shade, fig.width=7.25}
 shadeLower <- function(x){
-	val <- dnorm(x)
-	val[x >= zVal2] <- NA
-	return(val)
+  val <- dnorm(x)
+  val[x >= zVal2] <- NA
+  return(val)
 }
 
 limV = 3
 xvalues <- data.frame(x = c(-limV, limV))
 plt1 <- ggplot(xvalues, aes(x=xvalues)) +
-		stat_function(fun = dnorm) +
-		stat_function(fun = shadeLower, geom = "area", fill = "blue", alpha = 0.3 ) +
-		scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
-						   limits = c(-limV, limV)) +
-		xlab("Z") +
-		ylab("density") +
-		ggtitle("Possums with length smaller than 89 mm") +
-		theme(axis.text=element_text(size=12),
-			  axis.title=element_text(size=12),
-			  plot.title=element_text(hjust = 0.5)) # center the title
-		
+        stat_function(fun = dnorm) +
+        stat_function(fun = shadeLower, geom = "area", fill = "blue", alpha = 0.3 ) +
+        scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
+                           limits = c(-limV, limV)) +
+        xlab("Z") + ylab("density") +
+        ggtitle("Possums with length smaller than 89 mm") +
+        theme(axis.text=element_text(size=12),
+              axis.title=element_text(size=12),
+              plot.title=element_text(hjust = 0.5)) # center the title
+    
 print(plt1)
 ```
 
@@ -198,31 +193,24 @@ function.
 
 ```{r q3Shade, fig.width=7.25}
 shadeBetween <- function(x){
-	val <- dnorm(x)
-	val[x >= zVal1] <- NA
-	val[x <= zVal2] <- NA
-	return(val)
+  val <- dnorm(x)
+  val[x >= zVal1] <- NA
+  val[x <= zVal2] <- NA
+  return(val)
 }
 
 limV = 3
 xvalues <- data.frame(x = c(-limV, limV))
 plt3 <- ggplot(xvalues, aes(x=xvalues)) +
-		stat_function(fun = dnorm) +
-		stat_function(fun = shadeBetween, geom = "area", fill = "blue", alpha = 0.3 ) +
-		scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
-						   limits = c(-limV, limV)) +
-		xlab("Z") +
-		ylab("density") +
-		ggtitle("Possums with length between 89 and 98 mm") +
-		theme(axis.text=element_text(size=12),
-			  axis.title=element_text(size=12),
-			  plot.title=element_text(hjust = 0.5)) # center the title
-		
+        stat_function(fun = dnorm) +
+        stat_function(fun = shadeBetween, geom = "area", fill = "blue", alpha = 0.3 ) +
+        scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1), limits = c(-limV, limV)) +
+        xlab("Z") + ylab("density") +
+        ggtitle("Possums with length between 89 and 98 mm") +
+        theme(axis.text=element_text(size=12),
+              axis.title=element_text(size=12),
+              plot.title=element_text(hjust = 0.5)) # center the title
+    
 print(plt3)
 ```
-
-
-
-
-
 

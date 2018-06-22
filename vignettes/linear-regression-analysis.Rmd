@@ -1,7 +1,7 @@
 ---
 title: "Linear regression analysis in R"
 # author: "John Minter"
-date: "Last updated: 2018-06-08"
+date: "Last updated: 2018-06-22"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -53,9 +53,9 @@ wavelength of the electron beam.
 
 ```{r wavelengthFunction}
 fWavelength <- function (fVoltk){
-	# A function to compute the electron wavelength from the voltage
-	result <- 0.387818/sqrt(fVoltk * (1.0 + 0.978459e-3 * fVoltk))
-	return(result)
+  # A function to compute the electron wavelength from the voltage
+  result <- 0.387818/sqrt(fVoltk * (1.0 + 0.978459e-3 * fVoltk))
+  return(result)
 }
 
 ```
@@ -73,13 +73,13 @@ y <- 1:nr
 wL <- fWavelength(kV)
 
 for (i in 1:nr){
-	nR <- olk_data[i,1]
-	mM <- olk_data[i,2]
-	uR <- olk_data[i,3]
-	v3 <- (wL**3) * 1.0e7
-	u2 = uR * uR
-	x[i] <- u2
-	y[i] <- -(2 * nR-mM)/u2
+  nR <- olk_data[i,1]
+  mM <- olk_data[i,2]
+  uR <- olk_data[i,3]
+  v3 <- (wL**3) * 1.0e7
+  u2 = uR * uR
+  x[i] <- u2
+  y[i] <- -(2 * nR-mM)/u2
 }
 
 dfFit <- data.frame(x=x, y=y)
@@ -92,7 +92,6 @@ Now we can calculate the linear regression and look at the default output.
 
 ```{r doLinearFit}
 fit <- lm(y ~ x)
-
 pander(summary(fit))
 ```
 
@@ -100,7 +99,6 @@ We can compute some other quantities that help us calculate our parameters.
 The details are beyond the scope of this example.
 
 ```{r otherComp, echo=FALSE}
-
 b <- fit$coefficients[[1]]
 a <- fit$coefficients[[2]]
 yMin <- min(y)
@@ -154,18 +152,16 @@ of the position of the line. Notice the results near the ends of the
 data are less certain than those in the middle.
 
 ```{r plotResults, fig.width=7.25}
-plt <-	ggplot(data=dfFit, aes(x=x, y=y)) +
-		geom_point() +
-		stat_smooth(method='lm',formula=y~x) +
-		xlab(expression(u^2)) +
-		ylab(expression(-(2 * n[ring] - delta[max])/u^2)) +
-		ggtitle("Thon Ring Analysis of Krivanek data") +
-		theme(axis.text=element_text(size=12),
-		axis.title=element_text(size=12),
-		plot.title=element_text(hjust = 0.5)) # center the title
-
+plt <- ggplot(data=dfFit, aes(x=x, y=y)) +
+       geom_point() +
+       stat_smooth(method='lm',formula=y~x) +
+       xlab(expression(u^2)) +
+       ylab(expression(-(2 * n[ring] - delta[max])/u^2)) +
+       ggtitle("Thon Ring Analysis of Krivanek data") +
+       theme(axis.text=element_text(size=12),
+             axis.title=element_text(size=12),
+             plot.title=element_text(hjust = 0.5)) # center the title
 print(plt)
-
 ```
 
 # Output the results we need
@@ -175,16 +171,11 @@ values are measures of the **goodness of fit**. These should be as close to 1
 as possible. This is a **very good fit**.
 
 ```{r output}
-
 outLabel <- c("Slope", "Intercept", "defocus [nm]", "Cs [mm]", "R2", "Adj R2")
 
 outVal <- c(sprintf("%.2f", a), sprintf("%.2f", b), sprintf("%.2f nm", fEps/10),
-		    sprintf("%.3f mm", fCs/1.0e7), sprintf("%.4f", R2),
-		    sprintf("%.4f", adj.R2))
-
+            sprintf("%.3f mm", fCs/1.0e7), sprintf("%.4f", R2),
+             sprintf("%.4f", adj.R2))
 dfOut <- data.frame(Label=outLabel, Value=outVal)
-
 pander(dfOut)
-
-
 ```

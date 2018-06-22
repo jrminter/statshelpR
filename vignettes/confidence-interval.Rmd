@@ -1,7 +1,7 @@
 ---
 title: "Confidence Intervals"
 # author: "John Minter"
-date: "Last updated: 2018-06-09"
+date: "Last updated: 2018-06-22"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -73,26 +73,21 @@ error for a standard deviation of 10 is show below.
 sigma <- 10
 n <- seq(1, 30, 1)
 func <- function(n){
-	return(sigma/sqrt(n))
+  return(sigma/sqrt(n))
 }
 
 se <- sapply(n,func)
-
 df <- data.frame(n=n, se=se)
 
-plt <-	ggplot(data=df, aes(x=n,y=se)) + geom_point() +
-		xlab(label="number of samples") + ylab("SE") +
-		scale_y_continuous(breaks = seq(from = 0, to = 10, by = 1),
-						   limits = c(0,10)) +
-		ggtitle(expression(paste(sigma[M], " as a function of sample size"))) +
-		theme(axis.text=element_text(size=12),
-			  axis.title=element_text(size=14),
-			  plot.title = element_text(hjust = 0.5)) # center the title
-		
-
+plt <-  ggplot(data=df, aes(x=n,y=se)) + geom_point() +
+        xlab(label="number of samples") + ylab("SE") +
+        scale_y_continuous(breaks = seq(from = 0, to = 10, by = 1),
+                      	   limits = c(0,10)) +
+        ggtitle(expression(paste(sigma[M], " as a function of sample size"))) +
+        theme(axis.text=element_text(size=12),
+              axis.title=element_text(size=14),
+              plot.title = element_text(hjust = 0.5)) # center the title
 print(plt)
-
-
 ```
 
 If the interval spreads out 2 standard errors from the point estimate,
@@ -123,18 +118,15 @@ sampling distribution.
 ```{r SimNormal, fig.width=7.5}
 df <- data.frame(obs=meanTime25)
 
-
-plt <-	ggplot(data=df, aes(obs)) + 
-		geom_histogram(breaks=seq(85, 105, by = .5), col="black",
-					   fill="blue", alpha = .5) +
-		ylab(label="frequency") + xlab("sample mean") +
-		ggtitle("Sample Mean Distribution") +
-		theme(axis.text=element_text(size=12),
-			  axis.title=element_text(size=14),
-			  plot.title = element_text(hjust = 0.5)) # center the title
-
+plt <- ggplot(data=df, aes(obs)) + 
+       geom_histogram(breaks=seq(85, 105, by = .5), col="black",
+                      fill="blue", alpha = .5) +
+        ylab(label="frequency") + xlab("sample mean") +
+        ggtitle("Sample Mean Distribution") +
+        theme(axis.text=element_text(size=12),
+              axis.title=element_text(size=14),
+              plot.title = element_text(hjust = 0.5)) # center the title
 print(plt)
-
 ```
 
 And we can compute a **normal probability plot** to show that the
@@ -142,13 +134,11 @@ distribution is indeed normal.
 
 ```{r qqplotl, fig.width=7.5}
 qqPlt <- ggplot(data=df, aes(sample=obs))+ stat_qq() +
-		 ylab(label="sample means") + xlab("theoretical quantiles") +
-		 ggtitle("Normal Probability Plot") +
-		 theme(axis.text=element_text(size=12),
-		 	   axis.title=element_text(size=14),
-			   plot.title = element_text(hjust = 0.5)) # center the title
-		
-
+         ylab(label="sample means") + xlab("theoretical quantiles") +
+         ggtitle("Normal Probability Plot") +
+         theme(axis.text=element_text(size=12),
+               axis.title=element_text(size=14),
+               plot.title = element_text(hjust = 0.5)) # center the title
 print(qqPlt)
 ```
 
@@ -196,9 +186,6 @@ of < 10% of the population.
 
 - The distribution of observations is not **strongly skewed.**
 
-
-
-
 # Proper interpretation of confidence levels
 
 We need to be careful with our language in expressing confidence
@@ -215,10 +202,3 @@ within our boundaries.
 A confidence interval **says nothing** about the confidence of capturing 
 **individual observations**, a **proportion of observations**, or about
 capturing **point estimates**.
-
-
-
-
-
-
-

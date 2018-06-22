@@ -1,7 +1,7 @@
 ---
 title: "Computing the Confidence Level to use for $t^*$"
 # author: "John Minter"
-date: "Last updated: 2018-06-07"
+date: "Last updated: 2018-06-22"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -28,6 +28,8 @@ a $t^*$ calculation and the the confidence level entered in R's
 
 This is an exploratory data analysis
 
+# Sumarize the data
+
 We can load the data in R as shown below.
 
 ```{r loadData}
@@ -38,20 +40,25 @@ data(tstar_cl_r)
 pander(tstar_cl_r)
 ```
 
+# Fit the data to a linear model
+
+## Start with a plot
+
 We can plot the data and fit it to a linear model
 
 ```{r plotData, fig.width=6.5}
 
-plt <-	ggplot(tstar_cl_r, aes(x=CL, y=R)) +
-		geom_point(color='black', size=2) +
-		xlab("CL") + ylab("R") +
-		ggtitle("R as a function of CL") +
-		theme(axis.text=element_text(size=12),
-			  axis.title=element_text(size=14),
-			  plot.title = element_text(hjust = 0.5))
-
+plt <-  ggplot(tstar_cl_r, aes(x=CL, y=R)) +
+        geom_point(color='black', size=2) +
+        xlab("CL") + ylab("R") +
+        ggtitle("R as a function of CL") +
+        theme(axis.text=element_text(size=12),
+              axis.title=element_text(size=14),
+              plot.title = element_text(hjust = 0.5))
 print(plt)
 ```
+
+## Compute the linear model
 
 Let's do the linear model
 
@@ -60,33 +67,36 @@ fit <- lm(R ~ CL, data = tstar_cl_r)
 pander(summary(fit))
 ```
 
+## Add the line to the plot 
+
 And let's update our plot with the predicted line.
 
-```{r updatePlot, fig.width=6.5}
-
+```{r calcpredictedvalues}
 pred <- data.frame(R = predict(fit, tstar_cl_r))
 pred$CL <- tstar_cl_r$CL
 pander(pred)
+```
+
+```{r updatePlot, fig.width=6.5}
 
 plt <- plt +  geom_line(color='red',data = pred, aes(x=CL, y=R))
-
 print(plt)
 ```
 
 So our equation is $R = 0.5*CL + 0.5$
 
+## Make a data frame of calulated values
+
 ```{r testSoln}
 CL <- tstar_cl_r$CL
 
 CL_to_R <- function(x){
-	R <- 0.5 * x + 0.5
-	return(R)
+  R <- 0.5 * x + 0.5
+  return(R)
 }
-
 
 rVal <- sapply(CL, CL_to_R)
 
 dfCalc <- data.frame(CL=CL, R=rVal)
 pander(dfCalc)
-
 ```

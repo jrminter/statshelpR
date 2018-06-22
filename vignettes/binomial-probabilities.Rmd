@@ -1,7 +1,7 @@
 ---
 title: "Computing binomial probabilities in R"
 # author: "John Minter"
-date: "Last updated: 2018-06-05"
+date: "Last updated: 2018-06-22"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -101,8 +101,4 @@ a random sample of 8 people.
 It will be interesting to repeat the analysis from data from the
 [Bureau of Labor and Statistics](https://data.bls.gov/timeseries/LNU04000000)
 when we reach this point in the class each year.
-
-
-
-
 

@@ -1,7 +1,7 @@
 ---
 title: "Linear regression analysis of height data"
 # author: "John Minter"
-date: "Last updated: 2018-06-08"
+date: "Last updated: 2018-06-22"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -37,7 +37,6 @@ library(mosaic)
 library(pander)
 data(Galton)
 pander(head(Galton, 10))
-
 ```
 We want to add a column of data for the `average parent height`
 
@@ -50,29 +49,34 @@ Let's plot the data and let `ggplot2()` add the fits so we can
 easily see the results. We will use the `facet_wrap()` option
 to separate male and female genders.
 
-
 ```{r plotResults, fig.width=7.25, warning=FALSE, message=FALSE}
 library(grid)
-plt <-	ggplot(data = Galton, aes(x = height, y = midparentheight)) +
-		geom_point(aes(colour = sex), size = 1.5) +
-        geom_smooth(aes(colour = sex, fill = sex), method = "lm" ,size = .5) +
-		facet_wrap(~ sex) +
-		ggtitle("Galton height data with linear models") +
-		theme(panel.spacing = unit(2, "lines"),
-			  axis.text=element_text(size=12),
-			  axis.title=element_text(size=12),
-			  plot.title=element_text(hjust = 0.5)) # center the title
+plt <- ggplot(data = Galton, aes(x = height, y = midparentheight)) +
+       geom_point(aes(colour = sex), size = 1.5) +
+       geom_smooth(aes(colour = sex, fill = sex), method = "lm" ,size = .5) +
+       facet_wrap(~ sex) +
+       ggtitle("Galton height data with linear models") +
+       theme(panel.spacing = unit(2, "lines"),
+             axis.text=element_text(size=12),
+             axis.title=element_text(size=12),
+             plot.title=element_text(hjust = 0.5)) # center the title
 
 print(plt)
 ```
 
 # Look more closely at the fits
 
-```{r testFits}
+## The fit for females
+
+```{r testFitFemale}
 female <- Galton[which(Galton$sex=='F'), ]
 femaleLM <- lm(height ~ midparentheight, data = female)
 pander(summary(femaleLM))
+```
 
+## The fit for males
+
+```{r testFitMale}
 male <- Galton[which(Galton$sex=='M'), ]
 maleLM <- lm(height ~ midparentheight, data = male)
 pander(summary(maleLM))
