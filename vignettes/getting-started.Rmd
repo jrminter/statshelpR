@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with R and RStudio for Statistics"
 # author: "John Minter"
-date: "Last updated: 2018-06-16"
+date: "Last updated: 2018-06-22"
 output:
   rmarkdown::html_vignette:
     number_sections: true
@@ -91,7 +91,7 @@ explain our work.
 library(pander)
 # Our test scores... We create a list.
 scores <- c(99, 97, 90, 87, 82, 82, 80, 80, 78, 77, 75, 73, 70,
-						68, 65, 62, 60, 55, 45, 40)
+            68, 65, 62, 60, 55, 45, 40)
 # compute the mean and standard deviation
 # these are both built-in functions because they are used frequently
 avg <- mean(scores)
