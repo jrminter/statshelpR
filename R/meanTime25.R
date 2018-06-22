@@ -14,9 +14,9 @@
 #' meanTime25 <- c()
 #' i <- 1
 #' while(i<= sampleSize) {
-#'    sel <- df[sample(nrow(df), 25), ]
-#'    mu <- mean(sel)
-#'    meanTime25 <-c(meanTime25,mu)
+#'   sel <- df[sample(nrow(df), 25), ]
+#'   mu <- mean(sel)
+#'   meanTime25 <-c(meanTime25,mu)
 #' i=i+1
 #' }
 #' print(summary(meanTime25))

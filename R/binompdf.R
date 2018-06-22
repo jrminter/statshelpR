@@ -15,8 +15,5 @@
 #' binompdf(5, 13.0/52.0, 0)
 
 binompdf <- function(numtrials,p,x){
-    return(dbinom(x, size=numtrials, prob=p))
+  return(dbinom(x, size=numtrials, prob=p))
 }
-
-
-  

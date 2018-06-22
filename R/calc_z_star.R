@@ -15,7 +15,7 @@
 #' @export
 #' 
 calc_z_star <- function(p){
-	x <- 0.5*(1.0-p)
-	z <- qnorm(x, lower.tail = FALSE)
-	return(z)
+  x <- 0.5*(1.0-p)
+  z <- qnorm(x, lower.tail = FALSE)
+  return(z)
 }

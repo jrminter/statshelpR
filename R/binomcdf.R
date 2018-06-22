@@ -15,7 +15,5 @@
 #' binomcdf(5, 13.0/52.0, 0)
 
 binomcdf <- function(numtrials, p, x){
-	return(pbinom(x, size=numtrials, prob=p))}
-
-
-  
+  return(pbinom(x, size=numtrials, prob=p))
+}

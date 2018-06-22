@@ -19,7 +19,7 @@
 
 stem_leaf_plot <- function(dat){
   tmp <- capture.output(stem(dat))
-  stemdf = data.frame(tmp, rr=1:length(tmp))
+  stemdf <- data.frame(tmp, rr=1:length(tmp))
   plt <- ggplot(stemdf) +
          geom_text(aes(x=rr, y=0, label=tmp), hjust=0) + 
          coord_flip() + theme_classic() + 
