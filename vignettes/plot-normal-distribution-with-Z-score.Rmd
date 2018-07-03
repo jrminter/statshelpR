@@ -49,7 +49,7 @@ Let's start with a basic plot.
 ```{r basicPlt, fig.width=7.25}
 lims <- c(80, 105)
 xvalues <- data.frame(x=lims)
-plt <- ggplot(xvalues, aes(x = xvalues)) +
+plt <- ggplot(xvalues, aes(x=x)) +
        stat_function(fun = possumDistn) +
        xlim(lims) + xlab("possum length [mm]") +
        ylab("density")
@@ -74,7 +74,7 @@ Our plot of the standard form looks like this:
 zLim = 3
 lims <- c(-zLim, zLim)
 xvalues <- data.frame(x=lims)
-zPlt <- ggplot(xvalues, aes(x = xvalues)) +
+zPlt <- ggplot(xvalues, aes(x)) +
         stat_function(fun = dnorm) +
         scale_x_continuous(breaks = seq(from = -zLim, to = zLim, by = 1), limits = c(-zLim, zLim)) +
         xlab("Z") + ylab("density")
@@ -110,6 +110,7 @@ x values. The limit, `zVal1` is hard-coded. Make sure you don't redefine
 this variable! 
 
 ```{r q1Shade, fig.width=7.25}
+zVal1 <- (98 - 92.6)/3.6
 shadeLower1 <- function(x){
   val <- dnorm(x)
   val[x >= zVal1] <- NA
@@ -118,7 +119,7 @@ shadeLower1 <- function(x){
 
 limV = 3
 xvalues <- data.frame(x = c(-limV, limV))
-plt1 <- ggplot(xvalues, aes(x=xvalues)) +
+plt1 <- ggplot(xvalues, aes(x)) +
         stat_function(fun = dnorm) +
         stat_function(fun = shadeLower1, geom = "area", fill = "blue", alpha = 0.3 ) +
         scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
@@ -154,6 +155,7 @@ use the new value defined above. Note that we have to be careful
 to not re-define the variable `zVal2` and break the function.
 
 ```{r q2Shade, fig.width=7.25}
+zVal2 <- (89 - 92.6)/3.6
 shadeLower <- function(x){
   val <- dnorm(x)
   val[x >= zVal2] <- NA
@@ -162,7 +164,7 @@ shadeLower <- function(x){
 
 limV = 3
 xvalues <- data.frame(x = c(-limV, limV))
-plt1 <- ggplot(xvalues, aes(x=xvalues)) +
+plt1 <- ggplot(xvalues, aes(x)) +
         stat_function(fun = dnorm) +
         stat_function(fun = shadeLower, geom = "area", fill = "blue", alpha = 0.3 ) +
         scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1),
@@ -192,6 +194,9 @@ function.
 
 
 ```{r q3Shade, fig.width=7.25}
+zVal1 <- (98 - 92.6)/3.6
+zVal2 <- (89 - 92.6)/3.6
+
 shadeBetween <- function(x){
   val <- dnorm(x)
   val[x >= zVal1] <- NA
@@ -201,7 +206,7 @@ shadeBetween <- function(x){
 
 limV = 3
 xvalues <- data.frame(x = c(-limV, limV))
-plt3 <- ggplot(xvalues, aes(x=xvalues)) +
+plt3 <- ggplot(xvalues, aes(x)) +
         stat_function(fun = dnorm) +
         stat_function(fun = shadeBetween, geom = "area", fill = "blue", alpha = 0.3 ) +
         scale_x_continuous(breaks = seq(from = -limV, to = limV, by = 1), limits = c(-limV, limV)) +
