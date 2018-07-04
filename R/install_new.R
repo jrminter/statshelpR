@@ -14,9 +14,16 @@ install_new <- function(pkg,
                         repo = "http://cran.revolutionanalytics.com/",
                         lib = .Library){
   if (pkg %in% installed.packages()){
+    str.line <- paste0("Package ", pkg, " already installed \n")
+    cat(str.line)
   }else{
     utils::install.packages(pkg,
                             repos = repo,
                             dep = TRUE, lib = lib)
+    str.line <- paste0("Package ", pkg, " not found, so installing with dependencies... \n")
+    cat(str.line)
+    cat("Press CTRL C to abort.\n")
+    cat()
+    Sys.sleep(5)
   }
 }
