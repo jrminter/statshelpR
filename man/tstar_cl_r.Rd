@@ -4,8 +4,10 @@
 \name{tstar_cl_r}
 \alias{tstar_cl_r}
 \title{The confidence level for t* as a function value for the R qt function}
-\format{A data frame with 6 observations of the variable,
- \code{CL} and the variable \code{R}.}
+\format{
+A data frame with 6 observations of the variable,
+ \code{CL} and the variable \code{R}.
+}
 \source{
 A table from http://www.stats4stem.org/r-t-distribution
 }

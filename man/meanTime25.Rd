@@ -4,7 +4,9 @@
 \name{meanTime25}
 \alias{meanTime25}
 \title{A large population of mean running times prepared by resampling.}
-\format{A list with 100000 real values.}
+\format{
+A list with 100000 real values.
+}
 \source{
 Created from the openintro data with the following code:
 library(openintro)

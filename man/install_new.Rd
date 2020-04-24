@@ -4,8 +4,7 @@
 \alias{install_new}
 \title{Install a new package}
 \usage{
-install_new(pkg, repo = "http://cran.revolutionanalytics.com/",
-  lib = .Library)
+install_new(pkg, repo = "http://cran.revolutionanalytics.com/", lib = .Library)
 }
 \arguments{
 \item{pkg}{String. The package to install}

@@ -4,8 +4,10 @@
 \name{olk_data}
 \alias{olk_data}
 \title{Data for Thon Ring analysis}
-\format{A data frame with 8 observations of the variables
- \code{n}, code{max}, and \code{s.recip.ang}.}
+\format{
+A data frame with 8 observations of the variables
+ \code{n}, code{max}, and \code{s.recip.ang}.
+}
 \source{
 Data from Andre Krivanek on p.382 of Spence, High Resolution
  Microscopy, 3rd Ed., Oxford Press (2003).

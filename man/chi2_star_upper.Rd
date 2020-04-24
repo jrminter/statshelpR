@@ -4,8 +4,13 @@
 \alias{chi2_star_upper}
 \title{Analyze the variance from a dataset using the chi**2 distribution}
 \usage{
-chi2_star_upper(n, sigma2_samp, sigma2_pop, upper_bound = 70,
-  conf_level = 0.95)
+chi2_star_upper(
+  n,
+  sigma2_samp,
+  sigma2_pop,
+  upper_bound = 70,
+  conf_level = 0.95
+)
 }
 \arguments{
 \item{n}{The number of observations (real number)}
